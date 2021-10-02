@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_virtuality_saving_app/presentation/%20analyse_trade/analyse_trade_page.dart';
 import 'package:flutter_virtuality_saving_app/presentation/app_setting/app_setting_page.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/trade_create_page.dart';
+import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_switing_buton/trade_switing_button.dart';
 import 'package:flutter_virtuality_saving_app/presentation/screen/widget/bottom_navigation_bar/screen_bottom_navigation_bar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -23,7 +24,7 @@ class ScreenPage extends HookWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('もしも貯金'),
+        title: TradeSwitingButton(),
       ),
       body: _screens[indexNav],
       bottomNavigationBar: ScreenBottomNavigationBar(),
