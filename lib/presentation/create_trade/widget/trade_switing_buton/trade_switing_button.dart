@@ -8,7 +8,7 @@ class TradeSwitingButton extends HookWidget {
   const TradeSwitingButton({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final indexState = useProvider(tradeSwitingButtonProvider);
+    final indexState = useProvider(tradeSwitingButtonProvider); //useProvider
     return Container(
       width: 300,
       child: CupertinoSlidingSegmentedControl(

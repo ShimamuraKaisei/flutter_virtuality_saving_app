@@ -11,3 +11,4 @@ class TradeMemoTextFieldController
     extends StateNotifier<TextEditingController> {
   TradeMemoTextFieldController() : super(TextEditingController()); //初期化
 }
+//この中に文字数を判定する

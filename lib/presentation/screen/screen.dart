@@ -20,7 +20,8 @@ class ScreenPage extends HookWidget {
       AnalyseTradePage(),
       AppSettingPage(),
     ];
-    final indexNav = useProvider(bottomNavigationProvider); //状態を取得する解釈
+    final indexNav =
+        useProvider(bottomNavigationProvider); //状態を取得する解釈、今後のupdateでなくなる
 
     return Scaffold(
       appBar: AppBar(
