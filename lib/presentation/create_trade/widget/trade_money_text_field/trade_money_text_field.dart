@@ -10,14 +10,6 @@ class TradeMoneyTextField extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final moneyController = useProvider(tradeAmountMoneyTextFieldController);
-    return Container(
-      child: Column(
-        children: [
-          Text('金額'),
-          TextFieldCard(textEditingController: moneyController),
-          SizedBox(height: 50),
-        ],
-      ),
-    );
+    return TextFieldCard(textEditingController: moneyController, title: "金額");
   }
 }

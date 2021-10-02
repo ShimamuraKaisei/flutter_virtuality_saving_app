@@ -9,14 +9,6 @@ class TradeNameTextField extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final nameController = useProvider(tradeNameTextFieldController);
-    return Container(
-      child: Column(
-        children: [
-          Text("取引名"),
-          TextFieldCard(textEditingController: nameController),
-          SizedBox(height: 50),
-        ],
-      ),
-    );
+    return TextFieldCard(textEditingController: nameController, title: "メモ");
   }
 }

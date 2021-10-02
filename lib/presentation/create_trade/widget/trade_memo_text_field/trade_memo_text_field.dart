@@ -10,14 +10,6 @@ class TradeMemoTextField extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final memoController = useProvider(tradeMemoTextFieldController);
-    return Container(
-      child: Column(
-        children: [
-          Text('メモ'),
-          TextFieldCard(textEditingController: memoController),
-          SizedBox(height: 50),
-        ],
-      ),
-    );
+    return TextFieldCard(textEditingController: memoController, title: "メモ");
   }
 }
