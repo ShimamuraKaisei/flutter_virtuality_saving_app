@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_memo_text_field/trade_memo_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_money_text_field/trade_money_text_field_controller.dart';
-import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_switing_buton/trade_switing_button_provider.dart';
+import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_switing_buton/trade_switching_button_controller.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_name_text_field/trade_name_text_field_controller.dart';
 //取引内容入力後の確定ボタン
@@ -16,16 +16,17 @@ class TradeCreateButton extends HookWidget {
     final tradeMoneyController =
         useProvider(tradeAmountMoneyTextFieldController);
     final tradeMemoController = useProvider(tradeMemoTextFieldController);
-    final tradeSwitingindexState = useProvider(tradeSwitingButtonProvider);
+    final tradeSwitingindexState =
+        useProvider(tradeSwitingButtonController).indexState;
     return CupertinoButton(
       child: Text('保存'),
       color: Colors.red,
       onPressed: () {
         //⏬確認
         debugPrint('--------------');
-        debugPrint(tradeNameController.text);
-        debugPrint(tradeMoneyController.text);
-        debugPrint(tradeMemoController.text);
+        debugPrint(tradeNameController.textEdtingController.text);
+        debugPrint(tradeMoneyController.textEdtingController.text);
+        debugPrint(tradeMemoController.textEdtingController.text);
         debugPrint(tradeSwitingindexState.toString());
       },
     );

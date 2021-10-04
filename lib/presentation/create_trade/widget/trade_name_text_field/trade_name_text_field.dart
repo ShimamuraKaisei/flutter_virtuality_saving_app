@@ -8,7 +8,8 @@ class TradeNameTextField extends HookWidget {
   const TradeNameTextField({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final nameController = useProvider(tradeNameTextFieldController);
+    final nameController =
+        useProvider(tradeNameTextFieldController).textEdtingController;
     return TextFieldCard(textEditingController: nameController, title: "メモ");
   }
 }
