@@ -20,13 +20,12 @@ class ScreenPage extends HookWidget {
       AnalyseTradePage(),
       AppSettingPage(),
     ];
-    final indexNav = useProvider(bottomNavigationController)
-        .indexState; //状態を取得する解釈、今後のupdateでなくなる
+    final indexNav = useProvider(bottomNavigationController);
     return Scaffold(
       appBar: AppBar(
         title: TradeSwitingButton(),
       ),
-      body: _screens[indexNav],
+      body: _screens[indexNav.indexState],
       bottomNavigationBar: ScreenBottomNavigationBar(),
     );
   }

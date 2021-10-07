@@ -4,6 +4,8 @@ import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/t
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+//【貯金・支出】を切り替えるためのwidget
+
 class TradeSwitingButton extends HookWidget {
   const TradeSwitingButton({Key? key}) : super(key: key);
   @override

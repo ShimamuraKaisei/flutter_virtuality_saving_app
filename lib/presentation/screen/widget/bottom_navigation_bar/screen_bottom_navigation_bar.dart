@@ -3,6 +3,7 @@ import 'package:flutter_virtuality_saving_app/presentation/screen/widget/bottom_
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+//【入力画面・分析画面・設定画面】を切り替えるためのwidget
 class ScreenBottomNavigationBar extends HookWidget {
   const ScreenBottomNavigationBar({Key? key}) : super(key: key);
   @override

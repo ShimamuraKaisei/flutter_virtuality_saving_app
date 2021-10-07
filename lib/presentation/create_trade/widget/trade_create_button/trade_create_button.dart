@@ -12,22 +12,20 @@ class TradeCreateButton extends HookWidget {
   const TradeCreateButton({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final tradeNameController = useProvider(tradeNameTextFieldController);
-    final tradeMoneyController =
-        useProvider(tradeAmountMoneyTextFieldController);
+    final nameController = useProvider(tradeNameTextFieldController);
+    final moneyController = useProvider(tradeAmountMoneyTextFieldController);
     final tradeMemoController = useProvider(tradeMemoTextFieldController);
-    final tradeSwitingindexState =
-        useProvider(tradeSwitingButtonController).indexState;
+    final indexController = useProvider(tradeSwitingButtonController);
     return CupertinoButton(
       child: Text('保存'),
       color: Colors.red,
       onPressed: () {
         //⏬確認
         debugPrint('--------------');
-        debugPrint(tradeNameController.textEdtingController.text);
-        debugPrint(tradeMoneyController.textEdtingController.text);
+        debugPrint(nameController.textEdtingController.text);
+        debugPrint(moneyController.textEdtingController.text);
         debugPrint(tradeMemoController.textEdtingController.text);
-        debugPrint(tradeSwitingindexState.toString());
+        debugPrint(indexController.indexState.toString());
       },
     );
   }
