@@ -1,10 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter_virtuality_saving_app/domain/entity/trade/trade.dart';
-import 'package:flutter_virtuality_saving_app/domain/repository/trade_repository.dart';
+import 'package:flutter_virtuality_saving_app/domain/repository/i_trade_repository.dart';
 import 'package:flutter_virtuality_saving_app/infrastructure/datasource/trade_sqflite/i_trade_sqflite.dart';
 
-class TradeRepositoryImpl implements TradeRepository {
+class TradeRepositoryImpl implements ITradeRepository {
   final ITradeSqflite _sqf;
   TradeRepositoryImpl({
     required ITradeSqflite sqf,
@@ -20,7 +18,7 @@ class TradeRepositoryImpl implements TradeRepository {
   }
 
   @override
-  Future<void> delete(String id) async {
+  Future<void> delete(int id) async {
     try {
       await _sqf.delete(id);
     } catch (e) {

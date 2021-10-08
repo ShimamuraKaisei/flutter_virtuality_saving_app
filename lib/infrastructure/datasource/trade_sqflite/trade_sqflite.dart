@@ -42,7 +42,7 @@ class TradeSqflite implements ITradeSqflite {
   }
 
   @override
-  Future<void> delete(String id) async {
+  Future<void> delete(int id) async {
     try {
       final Database db = await _getDatabase();
       await db.delete(
