@@ -25,4 +25,14 @@ class TradeRepositoryImpl implements ITradeRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<List<Trade>> getTradeAll() async {
+    try {
+      final data = await _sqf.getTradeAll();
+      return data.map((e) => e.toEntity()).toList();
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

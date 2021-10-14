@@ -6,7 +6,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
   TradeInteractor({required ITradeRepository repository})
       : _repository = repository,
-        super(const AsyncLoading());
+        super(const AsyncLoading()) {
+    getTradeAll();
+  }
   final ITradeRepository _repository;
 
   Future<void> addTrade({
@@ -27,4 +29,11 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
   Future<void> deleteTrade({required int id}) async {
     await _repository.delete(id);
   }
+
+  Future<void> getTradeAll() async {
+    final trades = await _repository.getTradeAll();
+    state = AsyncData(
+        TradeInteractorState(repository: _repository, trades: trades));
+  }
+  //①アップデート関数
 }

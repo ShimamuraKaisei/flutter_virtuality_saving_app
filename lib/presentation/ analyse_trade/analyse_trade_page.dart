@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_virtuality_saving_app/interactor/trade/trade_interactor_provider.dart';
 
 //データグラフ画面
-class AnalyseTradePage extends StatelessWidget {
+//SQLiteからのデータ取得ができるかリスト表示で確認
+class AnalyseTradePage extends HookWidget {
   const AnalyseTradePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final tradeInteractorData = useProvider(tradeInteractrorProvider).data;
     return Scaffold(
-      body: Center(
-        child: Container(
-          child: Column(
-            children: [
-              Text("貯金データ画面"),
-            ],
-          ),
+      body: tradeInteractorData!.when(
+        data: (data) => ListView.builder(
+          itemCount: data.trades.length,
+          itemBuilder: (context, int index) {
+            return Card(
+              child: ListTile(
+                title: Text(data.trades[index].tradeName!),
+              ),
+            );
+          },
         ),
+        loading: () => CircularProgressIndicator(),
+        error: (error, stackTrace) => Text("データの取得に失敗しました"),
       ),
     );
   }

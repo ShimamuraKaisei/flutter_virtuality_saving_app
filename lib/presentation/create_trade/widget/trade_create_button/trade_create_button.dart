@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_virtuality_saving_app/domain/entity/trade/trade.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_memo_text_field/trade_memo_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_money_text_field/trade_money_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_switing_buton/trade_switching_button_controller.dart';
@@ -13,12 +14,12 @@ class TradeCreateButton extends HookWidget {
   const TradeCreateButton({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    //buildメソッドの下でuseProvider()を使用しないとエラー
     final nameController = useProvider(tradeNameTextFieldController);
     final moneyController = useProvider(tradeAmountMoneyTextFieldController);
     final tradeMemoController = useProvider(tradeMemoTextFieldController);
     final indexController = useProvider(tradeSwitingButtonController);
     final tradeInteractor = useProvider(tradeInteractrorProvider.notifier);
+    final tradeInteractorData = useProvider(tradeInteractrorProvider).data;
     return CupertinoButton(
       child: Text('保存'),
       color: Colors.red,
@@ -32,6 +33,8 @@ class TradeCreateButton extends HookWidget {
           ),
         );
         //⏬確認
+        print(tradeInteractorData);
+
         debugPrint('--------------');
         debugPrint(nameController.textEdtingController.text);
         debugPrint(moneyController.textEdtingController.text);

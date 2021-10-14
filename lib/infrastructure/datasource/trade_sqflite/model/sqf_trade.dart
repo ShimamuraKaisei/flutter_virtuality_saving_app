@@ -34,6 +34,15 @@ class SqfTrade {
       memo: map[keyMemo],
     );
   }
+  //⏬型戻し
+  Trade toEntity() {
+    return Trade(
+        tradeName: tradeName,
+        amountOfMoney: amountOfMoney,
+        judgement: judgement,
+        memo: memo);
+  }
+
   //⏬SQLite使い方サイトに出てくる toMap(){~}の部分⏩データベース操作の関数内で使用
   static Map<String, dynamic> convertToMap(Trade trade) {
     return {

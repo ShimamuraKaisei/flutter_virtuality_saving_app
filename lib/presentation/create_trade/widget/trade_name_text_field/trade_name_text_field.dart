@@ -10,6 +10,6 @@ class TradeNameTextField extends HookWidget {
   Widget build(BuildContext context) {
     final nameController =
         useProvider(tradeNameTextFieldController).textEdtingController;
-    return TextFieldCard(textEditingController: nameController, title: "メモ");
+    return TextFieldCard(textEditingController: nameController, title: "取引名");
   }
 }
