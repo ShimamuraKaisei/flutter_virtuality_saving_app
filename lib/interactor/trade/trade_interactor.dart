@@ -24,6 +24,7 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
       memo: memo,
     );
     await _repository.add(trade);
+    getTradeAll(); //追加した後にリスト内を更新⏩後で修正
   }
 
   Future<void> deleteTrade({required int id}) async {

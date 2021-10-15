@@ -6,13 +6,14 @@ import 'package:flutter_virtuality_saving_app/interactor/trade/trade_interactor_
 
 //データグラフ画面
 //SQLiteからのデータ取得ができるかリスト表示で確認
+
 class AnalyseTradePage extends HookWidget {
   const AnalyseTradePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final tradeInteractorData = useProvider(tradeInteractrorProvider).data;
+    final tradeInteractorData = useProvider(tradeInteractrorProvider);
     return Scaffold(
-      body: tradeInteractorData!.when(
+      body: tradeInteractorData.when(
         data: (data) => ListView.builder(
           itemCount: data.trades.length,
           itemBuilder: (context, int index) {
@@ -23,7 +24,9 @@ class AnalyseTradePage extends HookWidget {
             );
           },
         ),
-        loading: () => CircularProgressIndicator(),
+        loading: () => Center(
+          child: CircularProgressIndicator(),
+        ),
         error: (error, stackTrace) => Text("データの取得に失敗しました"),
       ),
     );

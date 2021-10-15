@@ -4,6 +4,7 @@
 import 'package:flutter_virtuality_saving_app/domain/entity/trade/trade.dart';
 
 class SqfTrade {
+  //Trade Classを継承しているわけではない
   //⏬テーブル作成時に使用
   static const keyId = 'id';
   static const keyTradeName = 'tradeName';
