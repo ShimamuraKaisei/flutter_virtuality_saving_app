@@ -10,13 +10,13 @@ class TradeSqflite implements ITradeSqflite {
 
   Future<Database> _getDatabase() async {
     final Future<Database> _database = openDatabase(
-      join(await getDatabasesPath(), 'trade_database.db'),
+      join(await getDatabasesPath(), 'trade_database3.db'),
       onCreate: (db, version) async {
         await db.execute(
           // テーブルの作成
           '''
           CREATE TABLE $_tableName (
-            ${SqfTrade.keyId} INTEGER PRIMARY KEY AUTOINCREMENT,
+            ${SqfTrade.keyId} TEXT,
             ${SqfTrade.keyTradeName} TEXT, 
             ${SqfTrade.keyAmountOfMoney} INTEGER, 
             ${SqfTrade.keyJudgement} INTEGER,
@@ -42,7 +42,7 @@ class TradeSqflite implements ITradeSqflite {
   }
 
   @override
-  Future<void> delete(int id) async {
+  Future<void> delete(String id) async {
     try {
       final Database db = await _getDatabase();
       await db.delete(

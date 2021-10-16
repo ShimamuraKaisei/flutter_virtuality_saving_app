@@ -12,7 +12,7 @@ class SqfTrade {
   static const keyJudgement = 'judgement';
   static const keyMemo = 'memo';
 
-  final int id;
+  final String id;
   final String tradeName;
   final int amountOfMoney;
   final int judgement;
@@ -38,6 +38,7 @@ class SqfTrade {
   //⏬型戻し
   Trade toEntity() {
     return Trade(
+        id: id,
         tradeName: tradeName,
         amountOfMoney: amountOfMoney,
         judgement: judgement,

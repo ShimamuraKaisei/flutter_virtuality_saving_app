@@ -4,6 +4,6 @@ import 'package:flutter_virtuality_saving_app/infrastructure/datasource/trade_sq
 //インターフェース部分
 abstract class ITradeSqflite {
   Future<void> add(Trade trade);
-  Future<void> delete(int id);
+  Future<void> delete(String id);
   Future<List<SqfTrade>> getTradeAll();
 }

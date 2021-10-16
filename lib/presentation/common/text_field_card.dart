@@ -13,6 +13,7 @@ class TextFieldCard extends HookWidget {
     return Container(
       child: Column(
         children: [
+          SizedBox(height: 40),
           Text(title),
           Card(
             shape: RoundedRectangleBorder(
@@ -27,7 +28,7 @@ class TextFieldCard extends HookWidget {
               ),
             ),
           ),
-          SizedBox(height: 50),
+          SizedBox(height: 20),
         ],
       ),
     );

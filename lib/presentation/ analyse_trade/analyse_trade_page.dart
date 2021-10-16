@@ -12,6 +12,7 @@ class AnalyseTradePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final tradeInteractorData = useProvider(tradeInteractrorProvider);
+    final tradeInterActor = useProvider(tradeInteractrorProvider.notifier);
     return Scaffold(
       body: tradeInteractorData.when(
         data: (data) => ListView.builder(
@@ -20,6 +21,8 @@ class AnalyseTradePage extends HookWidget {
             return Card(
               child: ListTile(
                 title: Text(data.trades[index].tradeName!),
+                onTap: () =>
+                    tradeInterActor.deleteTrade(id: data.trades[index].id!),
               ),
             );
           },

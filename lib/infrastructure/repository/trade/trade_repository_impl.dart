@@ -18,7 +18,7 @@ class TradeRepositoryImpl implements ITradeRepository {
   }
 
   @override
-  Future<void> delete(int id) async {
+  Future<void> delete(String id) async {
     try {
       await _sqf.delete(id);
     } catch (e) {

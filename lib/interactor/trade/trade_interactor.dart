@@ -12,12 +12,14 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
   final ITradeRepository _repository;
 
   Future<void> addTrade({
+    required String id,
     required String name,
     required String memo,
     required int money,
     required int judgement,
   }) async {
     final trade = Trade(
+      id: id,
       tradeName: name,
       amountOfMoney: money,
       judgement: judgement,
@@ -27,7 +29,7 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
     getTradeAll(); //追加した後にリスト内を更新⏩後で修正
   }
 
-  Future<void> deleteTrade({required int id}) async {
+  Future<void> deleteTrade({required String id}) async {
     await _repository.delete(id);
   }
 

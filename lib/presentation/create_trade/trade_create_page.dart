@@ -11,18 +11,16 @@ class TradeCreatePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      body: Center(
-        child: Container(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TradeNameTextField(),
-                TradeMoneyTextField(),
-                TradeMemoTextField(),
-                TradeCreateButton(),
-              ],
-            ),
+      body: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TradeNameTextField(),
+              TradeMoneyTextField(),
+              TradeMemoTextField(),
+              TradeCreateButton(),
+            ],
           ),
         ),
       ),

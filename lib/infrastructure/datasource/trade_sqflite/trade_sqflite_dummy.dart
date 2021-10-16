@@ -12,7 +12,7 @@ class TradeSqfliteDummy implements ITradeSqflite {
   }
 
   @override
-  Future<void> delete(int id) {
+  Future<void> delete(String id) {
     // TODO: implement delete
     throw UnimplementedError();
   }

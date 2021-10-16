@@ -7,6 +7,7 @@ import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/t
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_name_text_field/trade_name_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/interactor/trade/trade_interactor_provider.dart';
+import 'package:uuid/uuid.dart';
 //取引内容入力後の確定ボタン
 
 class TradeCreateButton extends HookWidget {
@@ -17,13 +18,14 @@ class TradeCreateButton extends HookWidget {
     final moneyController = useProvider(tradeAmountMoneyTextFieldController);
     final tradeMemoController = useProvider(tradeMemoTextFieldController);
     final indexController = useProvider(tradeSwitingButtonController);
-    final tradeInteractor =
-        useProvider(tradeInteractrorProvider.notifier); //notifierで関数にアクセス
+    final tradeInteractor = useProvider(tradeInteractrorProvider.notifier);
     return CupertinoButton(
       child: Text('保存'),
       color: Colors.red,
       onPressed: () {
+        var uuid = Uuid().v1(); //一意のIDを生成
         tradeInteractor.addTrade(
+          id: uuid,
           name: nameController.textEdtingController.text,
           judgement: indexController.indexState,
           memo: tradeMemoController.textEdtingController.text,
