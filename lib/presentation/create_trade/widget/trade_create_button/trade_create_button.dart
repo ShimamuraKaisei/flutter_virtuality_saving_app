@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_virtuality_saving_app/presentation/common/add_dialog.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_memo_text_field/trade_memo_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_money_text_field/trade_money_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_switing_buton/trade_switching_button_controller.dart';
@@ -24,21 +25,26 @@ class TradeCreateButton extends HookWidget {
       color: Colors.red,
       onPressed: () {
         var uuid = Uuid().v1(); //一意のIDを生成
-        tradeInteractor.addTrade(
-          id: uuid,
-          name: nameController.textEdtingController.text,
-          judgement: indexController.indexState,
-          memo: tradeMemoController.textEdtingController.text,
-          money: int.parse(
-            moneyController.textEdtingController.text,
-          ),
-        );
-        //⏬確認
-        debugPrint('--------------');
-        debugPrint(nameController.textEdtingController.text);
-        debugPrint(moneyController.textEdtingController.text);
-        debugPrint(tradeMemoController.textEdtingController.text);
-        debugPrint(indexController.indexState.toString());
+        if (nameController.textEdtingController.text == "" ||
+            moneyController.textEdtingController.text == "") {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AddAlertDialog();
+            },
+          );
+        } else {
+          tradeInteractor.addTrade(
+            //Tradeデータの生成
+            id: uuid,
+            name: nameController.textEdtingController.text,
+            judgement: indexController.indexState,
+            memo: tradeMemoController.textEdtingController.text,
+            money: int.parse(
+              moneyController.textEdtingController.text,
+            ),
+          );
+        }
       },
     );
   }

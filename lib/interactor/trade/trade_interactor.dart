@@ -31,6 +31,7 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
 
   Future<void> deleteTrade({required String id}) async {
     await _repository.delete(id);
+    getTradeAll();
   }
 
   Future<void> getTradeAll() async {
