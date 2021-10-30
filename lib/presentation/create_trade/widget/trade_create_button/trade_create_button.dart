@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_virtuality_saving_app/presentation/common/add_dialog.dart';
+import 'package:flutter_virtuality_saving_app/presentation/common/notification_dialog.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_memo_text_field/trade_memo_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_money_text_field/trade_money_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_switing_buton/trade_switching_button_controller.dart';
@@ -30,10 +30,16 @@ class TradeCreateButton extends HookWidget {
           showDialog(
             context: context,
             builder: (context) {
-              return AddAlertDialog();
+              return NotificationAlertDialog(title: '正しく値を入力してください');
             },
           );
         } else {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return NotificationAlertDialog(title: '追加しました');
+            },
+          );
           tradeInteractor.addTrade(
             //Tradeデータの生成
             id: uuid,
@@ -44,6 +50,10 @@ class TradeCreateButton extends HookWidget {
               moneyController.textEdtingController.text,
             ),
           );
+          //⏬textFieldの中身を初期化
+          nameController.textEdtingController.text = "";
+          moneyController.textEdtingController.text = "";
+          tradeMemoController.textEdtingController.text = "";
         }
       },
     );

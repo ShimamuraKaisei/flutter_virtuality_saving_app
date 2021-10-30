@@ -22,7 +22,6 @@ class TextFieldCard extends HookWidget {
             child: TextField(
               controller: textEditingController,
               textAlign: TextAlign.center,
-              //keyboardType: TextInputType.number, //キーボードは数値のみ
               decoration: InputDecoration(
                 border: InputBorder.none,
               ),

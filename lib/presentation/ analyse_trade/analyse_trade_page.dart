@@ -6,7 +6,6 @@ import 'package:flutter_virtuality_saving_app/interactor/trade/trade_interactor_
 
 //データグラフ画面
 //SQLiteからのデータ取得ができるかリスト表示で確認
-
 class AnalyseTradePage extends HookWidget {
   const AnalyseTradePage({Key? key}) : super(key: key);
   @override

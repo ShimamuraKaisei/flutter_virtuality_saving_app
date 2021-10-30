@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_virtuality_saving_app/presentation/%20analyse_trade/analyse_trade_page.dart';
 import 'package:flutter_virtuality_saving_app/presentation/app_setting/app_setting_page.dart';
+import 'package:flutter_virtuality_saving_app/presentation/calendar_trade/calendar_trade.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/trade_create_page.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_switing_buton/trade_switching_button.dart';
 import 'package:flutter_virtuality_saving_app/presentation/screen/widget/bottom_navigation_bar/screen_bottom_navigation_bar.dart';
@@ -18,6 +19,7 @@ class ScreenPage extends HookWidget {
       //要素が書き換えられてはいけないので_をつける
       TradeCreatePage(),
       AnalyseTradePage(),
+      CalendarTrade(),
       AppSettingPage(),
     ];
     final indexNav = useProvider(bottomNavigationController);

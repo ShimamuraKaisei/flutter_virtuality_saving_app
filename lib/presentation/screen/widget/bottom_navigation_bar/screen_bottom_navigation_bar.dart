@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_virtuality_saving_app/presentation/screen/widget/bottom_navigation_bar/screen_bottom_navigation_bar_controller.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_virtuality_saving_app/interactor/trade/trade_interactor_provider.dart';
 
 //【入力画面・分析画面・設定画面】を切り替えるためのwidget
 class ScreenBottomNavigationBar extends HookWidget {
@@ -13,6 +12,7 @@ class ScreenBottomNavigationBar extends HookWidget {
     // final tradeInteractor =
     //     useProvider(tradeInteractrorProvider.notifier); //notifierで関数にアクセス
     return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
       onTap: (int index) {
         context
             .read(bottomNavigationController.notifier)
@@ -22,12 +22,16 @@ class ScreenBottomNavigationBar extends HookWidget {
       currentIndex: indexStateNav,
       items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.rate_review),
+          icon: Icon(Icons.create),
           label: '入力',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.analytics),
           label: '分析',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.calendar_today),
+          label: 'カレンダー',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.settings),
