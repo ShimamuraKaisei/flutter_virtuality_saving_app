@@ -3,6 +3,7 @@ import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/t
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_money_text_field/trade_money_text_field.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_name_text_field/trade_name_text_field.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_create_button/trade_create_button.dart';
+import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_select_date/trade_select_date.dart';
 
 //取引（貯金 or 支出 ）追加画面
 class TradeCreatePage extends StatelessWidget {
@@ -19,6 +20,7 @@ class TradeCreatePage extends StatelessWidget {
               TradeNameTextField(),
               TradeMoneyTextField(),
               TradeMemoTextField(),
+              TradeSelectDateField(),
               TradeCreateButton(),
             ],
           ),
