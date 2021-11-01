@@ -17,6 +17,7 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
     required String memo,
     required int money,
     required int judgement,
+    required String tradeDay,
   }) async {
     final trade = Trade(
       id: id,
@@ -24,6 +25,7 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
       amountOfMoney: money,
       judgement: judgement,
       memo: memo,
+      tradeDay: tradeDay,
     );
     await _repository.add(trade);
     getTradeAll(); //追加した後にリスト内を更新⏩後で修正

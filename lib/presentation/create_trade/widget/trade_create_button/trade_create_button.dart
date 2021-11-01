@@ -4,10 +4,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_virtuality_saving_app/presentation/common/notification_dialog.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_memo_text_field/trade_memo_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_money_text_field/trade_money_text_field_controller.dart';
+import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_select_date/trade_select_date_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_switing_buton/trade_switching_button_controller.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_name_text_field/trade_name_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/interactor/trade/trade_interactor_provider.dart';
+import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 //取引内容入力後の確定ボタン
 
@@ -20,6 +22,7 @@ class TradeCreateButton extends HookWidget {
     final tradeMemoController = useProvider(tradeMemoTextFieldController);
     final indexController = useProvider(tradeSwitingButtonController);
     final tradeInteractor = useProvider(tradeInteractrorProvider.notifier);
+    final tradeDateController = useProvider(tradeSelectController);
     return CupertinoButton(
       child: Text('保存'),
       color: Colors.red,
@@ -49,6 +52,8 @@ class TradeCreateButton extends HookWidget {
             money: int.parse(
               moneyController.textEdtingController.text,
             ),
+            tradeDay: DateFormat('yyyy年M月d日')
+                .format(tradeDateController.selectedDate!),
           );
           //⏬textFieldの中身を初期化
           nameController.textEdtingController.text = "";

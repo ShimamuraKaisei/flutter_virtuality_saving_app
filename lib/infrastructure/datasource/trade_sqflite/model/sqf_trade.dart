@@ -11,19 +11,22 @@ class SqfTrade {
   static const keyAmountOfMoney = 'amountOfMoney';
   static const keyJudgement = 'judgement';
   static const keyMemo = 'memo';
+  static const keyTradeDay = 'tradeDay';
 
   final String id;
   final String tradeName;
   final int amountOfMoney;
   final int judgement;
   final String memo;
+  final String tradeDay;
 
   const SqfTrade(
       {required this.id,
       required this.tradeName,
       required this.amountOfMoney,
       required this.judgement,
-      required this.memo});
+      required this.memo,
+      required this.tradeDay});
 
   //⏬検索用の関数で使用
   factory SqfTrade.fromMap(Map<String, dynamic> map) {
@@ -33,6 +36,7 @@ class SqfTrade {
       amountOfMoney: map[keyAmountOfMoney],
       judgement: map[keyJudgement],
       memo: map[keyMemo],
+      tradeDay: map[keyTradeDay],
     );
   }
   //⏬型戻し
@@ -42,7 +46,8 @@ class SqfTrade {
         tradeName: tradeName,
         amountOfMoney: amountOfMoney,
         judgement: judgement,
-        memo: memo);
+        memo: memo,
+        tradeDay: tradeDay);
   }
 
   //⏬SQLite使い方サイトに出てくる toMap(){~}の部分⏩データベース操作の関数内で使用
@@ -53,6 +58,7 @@ class SqfTrade {
       keyAmountOfMoney: trade.amountOfMoney,
       keyJudgement: trade.judgement,
       keyMemo: trade.memo,
+      keyTradeDay: trade.tradeDay,
     };
   }
 }

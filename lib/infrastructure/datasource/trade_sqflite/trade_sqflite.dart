@@ -10,7 +10,7 @@ class TradeSqflite implements ITradeSqflite {
 
   Future<Database> _getDatabase() async {
     final Future<Database> _database = openDatabase(
-      join(await getDatabasesPath(), 'trade_database3.db'),
+      join(await getDatabasesPath(), 'trade_database5.db'),
       onCreate: (db, version) async {
         await db.execute(
           // テーブルの作成
@@ -20,7 +20,8 @@ class TradeSqflite implements ITradeSqflite {
             ${SqfTrade.keyTradeName} TEXT, 
             ${SqfTrade.keyAmountOfMoney} INTEGER, 
             ${SqfTrade.keyJudgement} INTEGER,
-            ${SqfTrade.keyMemo} TEXT
+            ${SqfTrade.keyMemo} TEXT,
+            ${SqfTrade.keyTradeDay} TEXT
           )
           ''',
         );
@@ -68,6 +69,7 @@ class TradeSqflite implements ITradeSqflite {
                 amountOfMoney: maps[i]['amountOfMoney'],
                 judgement: maps[i]['judgement'],
                 memo: maps[i]['memo'],
+                tradeDay: maps[i]['tradeDay'],
               ));
     } catch (e) {
       rethrow;
