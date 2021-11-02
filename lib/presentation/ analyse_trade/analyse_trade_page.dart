@@ -22,6 +22,7 @@ class AnalyseTradePage extends HookWidget {
                 title: Text(data.trades[index].tradeName!),
                 onTap: () =>
                     tradeInterActor.deleteTrade(id: data.trades[index].id!),
+                subtitle: Text(data.trades[index].tradeDay!),
               ),
             );
           },

@@ -35,4 +35,24 @@ class TradeRepositoryImpl implements ITradeRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<List<Trade>> getExpenditureTradeAll() async {
+    try {
+      final data = await _sqf.getExpenditureTradeAll();
+      return data.map((e) => e.toEntity()).toList();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<Trade>> getRevenueTradeAll() async {
+    try {
+      final data = await _sqf.getRevenueTradeAll();
+      return data.map((e) => e.toEntity()).toList();
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

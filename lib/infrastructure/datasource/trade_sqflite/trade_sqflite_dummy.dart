@@ -22,6 +22,18 @@ class TradeSqfliteDummy implements ITradeSqflite {
     // TODO: implement getTradeAll
     throw UnimplementedError();
   }
+
+  @override
+  Future<List<SqfTrade>> getExpenditureTradeAll() {
+    // TODO: implement getExpenditureTradeAll
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<SqfTrade>> getRevenueTradeAll() {
+    // TODO: implement getRevenueTradeAll
+    throw UnimplementedError();
+  }
 }
 
 //インスタンス化したデータを入れるリスト

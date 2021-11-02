@@ -75,4 +75,46 @@ class TradeSqflite implements ITradeSqflite {
       rethrow;
     }
   }
+
+  @override
+  Future<List<SqfTrade>> getExpenditureTradeAll() async {
+    try {
+      final Database db = await _getDatabase();
+      final List<Map<String, dynamic>> maps =
+          await db.query(_tableName, where: 'judgement =?', whereArgs: [1]);
+      return List.generate(
+          maps.length,
+          (i) => SqfTrade(
+                id: maps[i]['id'],
+                tradeName: maps[i]['tradeName'],
+                amountOfMoney: maps[i]['amountOfMoney'],
+                judgement: maps[i]['judgement'],
+                memo: maps[i]['memo'],
+                tradeDay: maps[i]['tradeDay'],
+              ));
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<SqfTrade>> getRevenueTradeAll() async {
+    try {
+      final Database db = await _getDatabase();
+      final List<Map<String, dynamic>> maps =
+          await db.query(_tableName, where: 'judgement =?', whereArgs: [0]);
+      return List.generate(
+          maps.length,
+          (i) => SqfTrade(
+                id: maps[i]['id'],
+                tradeName: maps[i]['tradeName'],
+                amountOfMoney: maps[i]['amountOfMoney'],
+                judgement: maps[i]['judgement'],
+                memo: maps[i]['memo'],
+                tradeDay: maps[i]['tradeDay'],
+              ));
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

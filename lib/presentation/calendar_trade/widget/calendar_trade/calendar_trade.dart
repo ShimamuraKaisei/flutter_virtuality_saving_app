@@ -16,7 +16,7 @@ class CalendarTrade extends HookWidget {
         firstDay: DateTime.utc(2000, 1, 1),
         lastDay: DateTime.utc(2200, 12, 31),
         headerStyle: HeaderStyle(formatButtonVisible: false), //フォーマット変更ボタンの非表示
-        rowHeight: 42, //カレンダー縦の余白
+        rowHeight: 38, //カレンダー縦の余白
         selectedDayPredicate: (day) {
           //どの日が現在選択されているか
           return isSameDay(_selectedDay, day);
