@@ -17,10 +17,14 @@ class ExpenditureTrades extends HookWidget {
           Container(
             child: tradeInteractorData.when(
               data: (data) {
-                final sum = data.expenditureTrade
-                    .map((trade) => trade.amountOfMoney)
-                    .reduce((a, b) => a! + b!);
-                return Text(sum.toString() + "円");
+                try {
+                  final sum = data.expenditureTrade
+                      .map((trade) => trade.amountOfMoney)
+                      .reduce((a, b) => a! + b!);
+                  return Text(sum.toString() + "円");
+                } catch (e) {
+                  return Text("0円");
+                }
               },
               loading: () {
                 const Center(child: CircularProgressIndicator());

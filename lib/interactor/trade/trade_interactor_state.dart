@@ -5,8 +5,8 @@ class TradeInteractorState {
   ITradeRepository repository;
 
   List<Trade> trades;
-  List<Trade> expenditureTrade;
-  List<Trade> reveneTrade;
+  List<Trade> expenditureTrade; //支出の全データ
+  List<Trade> reveneTrade; //収支の全データ
 
   TradeInteractorState({
     required this.repository,
