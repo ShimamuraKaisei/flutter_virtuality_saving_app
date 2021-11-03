@@ -8,8 +8,6 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
       : _repository = repository,
         super(const AsyncLoading()) {
     getTradeAll();
-    getExpenditureTrade();
-    getReveneTrade();
   }
   final ITradeRepository _repository;
 
@@ -31,33 +29,23 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
     );
     await _repository.add(trade);
     getTradeAll(); //【 追加した後にリスト内を更新 】⏩後で修正
-    getExpenditureTrade();
-    getReveneTrade();
   }
 
   Future<void> deleteTrade({required String id}) async {
     await _repository.delete(id);
     getTradeAll(); //【 データを消した後にリスト内を更新 】
-    getExpenditureTrade();
-    getReveneTrade();
   }
 
   Future<void> getTradeAll() async {
     final trades = await _repository.getTradeAll();
-    state = AsyncData(
-        TradeInteractorState(repository: _repository, trades: trades));
-  }
+    final expenditureTrades = await _repository.getExpenditureTrade();
+    final reveneTrades = await _repository.getReveneTrade();
 
-  Future<void> getExpenditureTrade() async {
-    final trades = await _repository.getExpenditureTrade();
-    state = AsyncData(
-        TradeInteractorState(repository: _repository, trades: trades));
-  }
-
-  Future<void> getReveneTrade() async {
-    final trades = await _repository.getReveneTrade();
-    state = AsyncData(
-        TradeInteractorState(repository: _repository, trades: trades));
+    state = AsyncData(TradeInteractorState(
+        repository: _repository,
+        trades: trades,
+        expenditureTrade: expenditureTrades,
+        reveneTrade: reveneTrades));
   }
   //①アップデート関数
 }

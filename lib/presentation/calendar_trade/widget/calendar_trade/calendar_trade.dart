@@ -9,26 +9,24 @@ class CalendarTrade extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final _selectedDay = useProvider(calendarTradeController).selectedDay;
-    return Scaffold(
-      body: TableCalendar(
-        locale: 'ja_JP',
-        focusedDay: _selectedDay, //Stateクラスの方で現在日に初期化している
-        firstDay: DateTime.utc(2000, 1, 1),
-        lastDay: DateTime.utc(2200, 12, 31),
-        headerStyle: HeaderStyle(formatButtonVisible: false), //フォーマット変更ボタンの非表示
-        rowHeight: 38, //カレンダー縦の余白
-        selectedDayPredicate: (day) {
-          //どの日が現在選択されているか
-          return isSameDay(_selectedDay, day);
-        },
-        onDaySelected: (selectedDay, focuseDay) {
-          if (!isSameDay(_selectedDay, selectedDay)) {
-            context
-                .read(calendarTradeController.notifier)
-                .getCurrentDate(selectedDay);
-          }
-        },
-      ),
+    return TableCalendar(
+      locale: 'ja_JP',
+      focusedDay: _selectedDay, //Stateクラスの方で現在日に初期化している
+      firstDay: DateTime.utc(2000, 1, 1),
+      lastDay: DateTime.utc(2200, 12, 31),
+      headerStyle: HeaderStyle(formatButtonVisible: false), //フォーマット変更ボタンの非表示
+      rowHeight: 38, //カレンダー縦の余白
+      selectedDayPredicate: (day) {
+        //どの日が現在選択されているか
+        return isSameDay(_selectedDay, day);
+      },
+      onDaySelected: (selectedDay, focuseDay) {
+        if (!isSameDay(_selectedDay, selectedDay)) {
+          context
+              .read(calendarTradeController.notifier)
+              .getCurrentDate(selectedDay);
+        }
+      },
     );
   }
 }
