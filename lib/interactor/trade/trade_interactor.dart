@@ -42,10 +42,11 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
     final reveneTrades = await _repository.getReveneTrade();
 
     state = AsyncData(TradeInteractorState(
-        repository: _repository,
-        trades: trades,
-        expenditureTrade: expenditureTrades,
-        reveneTrade: reveneTrades));
+      repository: _repository,
+      trades: trades,
+      expenditureTrade: expenditureTrades,
+      reveneTrade: reveneTrades,
+    ));
   }
   //①アップデート関数
 }

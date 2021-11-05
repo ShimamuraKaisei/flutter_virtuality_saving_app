@@ -1,6 +1,7 @@
 import 'package:flutter_virtuality_saving_app/domain/entity/trade/trade.dart';
 import 'package:flutter_virtuality_saving_app/infrastructure/datasource/trade_sqflite/i_trade_sqflite.dart';
 import 'package:flutter_virtuality_saving_app/infrastructure/datasource/trade_sqflite/model/sqf_trade.dart';
+import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -104,15 +105,49 @@ class TradeSqflite implements ITradeSqflite {
       final List<Map<String, dynamic>> maps =
           await db.query(_tableName, where: 'judgement =?', whereArgs: [0]);
       return List.generate(
-          maps.length,
-          (i) => SqfTrade(
-                id: maps[i]['id'],
-                tradeName: maps[i]['tradeName'],
-                amountOfMoney: maps[i]['amountOfMoney'],
-                judgement: maps[i]['judgement'],
-                memo: maps[i]['memo'],
-                tradeDay: maps[i]['tradeDay'],
-              ));
+        maps.length,
+        (i) => SqfTrade(
+          id: maps[i]['id'],
+          tradeName: maps[i]['tradeName'],
+          amountOfMoney: maps[i]['amountOfMoney'],
+          judgement: maps[i]['judgement'],
+          memo: maps[i]['memo'],
+          tradeDay: maps[i]['tradeDay'],
+        ),
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<SqfTrade>> getCurrentMonthExpenditureTrade(
+      DateTime currentDay) async {
+    try {
+      final dateFormatter = DateFormat("yyyy年M月");
+      String result = dateFormatter.format(currentDay);
+      final Database db = await _getDatabase();
+      final List<Map<String, dynamic>> maps = await db.query(_tableName,
+          where: 'tradeDay LIKE ?', whereArgs: ['%$result%']);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<SqfTrade>> getCurrentMonthReveneTrade() {
+    // TODO: implement getCurrentMonthReveneTrade
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<SqfTrade>> getCurrentMonthTrade(DateTime currentDay) async {
+    try {
+      final dateFormatter = DateFormat("yyyy年M月");
+      String result = dateFormatter.format(currentDay);
+      final Database db = await _getDatabase();
+      final List<Map<String, dynamic>> maps = await db.query(_tableName,
+          where: 'tradeDay LIKE ?', whereArgs: ['%$result%']);
     } catch (e) {
       rethrow;
     }

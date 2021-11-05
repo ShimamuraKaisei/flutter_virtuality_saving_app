@@ -13,7 +13,7 @@ class ExpenditureTrades extends HookWidget {
     return Container(
       child: Column(
         children: [
-          Text("収支"),
+          Text("支出"),
           Container(
             child: tradeInteractorData.when(
               data: (data) {

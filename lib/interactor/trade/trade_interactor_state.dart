@@ -6,6 +6,8 @@ class TradeInteractorState {
 
   List<Trade> trades;
   List<Trade> expenditureTrade; //支出の全データ
+  //TODO:カレンダーページで表示している月の支出の全データリスト作成
+  //TODO:カレンダーページで表示している月の収支の全データリスト作成
   List<Trade> reveneTrade; //収支の全データ
 
   TradeInteractorState({
