@@ -14,9 +14,7 @@ class ScreenBottomNavigationBar extends HookWidget {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
       onTap: (int index) {
-        context
-            .read(bottomNavigationController.notifier)
-            .getCurrentIndex(index);
+        context.read(bottomNavigationController.notifier).getCurrentIndex(index);
         // tradeInteractor.getTradeAll();
       },
       currentIndex: indexStateNav,

@@ -28,8 +28,7 @@ class TradeCreateButton extends HookWidget {
       color: Colors.red,
       onPressed: () {
         var uuid = Uuid().v1(); //一意のIDを生成
-        if (nameController.textEdtingController.text == "" ||
-            moneyController.textEdtingController.text == "") {
+        if (nameController.textEdtingController.text == "" || moneyController.textEdtingController.text == "") {
           showDialog(
             context: context,
             builder: (context) {
@@ -52,8 +51,7 @@ class TradeCreateButton extends HookWidget {
             money: int.parse(
               moneyController.textEdtingController.text,
             ),
-            tradeDay: DateFormat('yyyy年M月d日')
-                .format(tradeDateController.selectedDate!),
+            tradeDay: DateFormat('yyyy年M月d日').format(tradeDateController.selectedDate!),
           );
           //⏬textFieldの中身を初期化
           nameController.textEdtingController.text = "";

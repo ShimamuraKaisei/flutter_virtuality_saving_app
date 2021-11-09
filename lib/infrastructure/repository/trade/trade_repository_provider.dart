@@ -3,5 +3,4 @@ import 'package:flutter_virtuality_saving_app/infrastructure/repository/trade/tr
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_virtuality_saving_app/infrastructure/datasource/trade_sqflite/trade_sqflite_provider.dart';
 
-final tradeRepositoryProvoder = Provider<ITradeRepository>(
-    (ref) => TradeRepositoryImpl(sqf: ref.read(tradeSqfliteProvider)));
+final tradeRepositoryProvoder = Provider<ITradeRepository>((ref) => TradeRepositoryImpl(sqf: ref.read(tradeSqfliteProvider)));

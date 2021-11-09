@@ -4,6 +4,9 @@ abstract class ITradeRepository {
   Future<void> add(Trade trade);
   Future<void> delete(String id);
   Future<List<Trade>> getTradeAll();
+  // Future<List<Trade>> getCurrentMonthTrade();
   Future<List<Trade>> getReveneTrade();
+  // Future<List<Trade>> getCurrentMonthReveneTrade();
   Future<List<Trade>> getExpenditureTrade();
+  // Future<List<Trade>> getCurrentMonthExpenditureTrade();
 }

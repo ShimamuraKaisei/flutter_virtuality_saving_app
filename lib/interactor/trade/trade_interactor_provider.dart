@@ -3,7 +3,6 @@ import 'package:flutter_virtuality_saving_app/interactor/trade/trade_interactor.
 import 'package:flutter_virtuality_saving_app/interactor/trade/trade_interactor_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final tradeInteractrorProvider =
-    StateNotifierProvider<TradeInteractor, AsyncValue<TradeInteractorState>>(
+final tradeInteractrorProvider = StateNotifierProvider<TradeInteractor, AsyncValue<TradeInteractorState>>(
   (ref) => TradeInteractor(repository: ref.read(tradeRepositoryProvoder)),
 );

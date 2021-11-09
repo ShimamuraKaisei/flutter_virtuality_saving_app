@@ -3,17 +3,20 @@ import 'package:flutter_virtuality_saving_app/domain/repository/i_trade_reposito
 
 class TradeInteractorState {
   ITradeRepository repository;
-
   List<Trade> trades;
   List<Trade> expenditureTrade; //支出の全データ
-  //TODO:カレンダーページで表示している月の支出の全データリスト作成
-  //TODO:カレンダーページで表示している月の収支の全データリスト作成
   List<Trade> reveneTrade; //収支の全データ
+  List<Trade> currentMonthTrade;
+  List<Trade> currentMonthExpenditureTrade; //TODO:カレンダーページで表示している月の支出の全データリスト作成
+  List<Trade> currentMonghReveneTrade; //TODO:カレンダーページで表示している月の収支の全データリスト作成
 
   TradeInteractorState({
     required this.repository,
     required this.trades,
     required this.expenditureTrade,
     required this.reveneTrade,
+    required this.currentMonthExpenditureTrade,
+    required this.currentMonghReveneTrade,
+    required this.currentMonthTrade,
   });
 }

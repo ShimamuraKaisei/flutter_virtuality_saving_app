@@ -1,6 +1,8 @@
 import 'package:flutter_virtuality_saving_app/domain/entity/trade/trade.dart';
 import 'package:flutter_virtuality_saving_app/domain/repository/i_trade_repository.dart';
 import 'package:flutter_virtuality_saving_app/infrastructure/datasource/trade_sqflite/i_trade_sqflite.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_virtuality_saving_app/presentation/calendar_trade/widget/calendar_trade/clendar_trade_controller.dart';
 
 class TradeRepositoryImpl implements ITradeRepository {
   final ITradeSqflite _sqf;
@@ -55,4 +57,34 @@ class TradeRepositoryImpl implements ITradeRepository {
       rethrow;
     }
   }
+
+  // @override
+  // Future<List<Trade>> getCurrentMonthExpenditureTrade() async {
+  //   try {
+  //     final data = await _sqf.getCurrentMonthExpenditureTrade();
+  //     return data.map((e) => e.toEntity()).toList();
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
+
+  // @override
+  // Future<List<Trade>> getCurrentMonthReveneTrade() async {
+  //   try {
+  //     final data = await _sqf.getCurrentMonthReveneTrade();
+  //     return data.map((e) => e.toEntity()).toList();
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
+
+  // @override
+  // Future<List<Trade>> getCurrentMonthTrade() async {
+  //   try {
+  //     final data = await _sqf.getCurrentMonthTrade();
+  //     return data.map((e) => e.toEntity()).toList();
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 }

@@ -4,6 +4,8 @@ import 'package:flutter_virtuality_saving_app/infrastructure/datasource/trade_sq
 import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_virtuality_saving_app/presentation/calendar_trade/widget/calendar_trade/clendar_trade_controller.dart';
 
 class TradeSqflite implements ITradeSqflite {
   //implementsすることで定義忘れがあるとエラー文がでる
@@ -81,8 +83,7 @@ class TradeSqflite implements ITradeSqflite {
   Future<List<SqfTrade>> getExpenditureTradeAll() async {
     try {
       final Database db = await _getDatabase();
-      final List<Map<String, dynamic>> maps =
-          await db.query(_tableName, where: 'judgement =?', whereArgs: [1]);
+      final List<Map<String, dynamic>> maps = await db.query(_tableName, where: 'judgement =?', whereArgs: [1]);
       return List.generate(
           maps.length,
           (i) => SqfTrade(
@@ -102,8 +103,7 @@ class TradeSqflite implements ITradeSqflite {
   Future<List<SqfTrade>> getRevenueTradeAll() async {
     try {
       final Database db = await _getDatabase();
-      final List<Map<String, dynamic>> maps =
-          await db.query(_tableName, where: 'judgement =?', whereArgs: [0]);
+      final List<Map<String, dynamic>> maps = await db.query(_tableName, where: 'judgement =?', whereArgs: [0]);
       return List.generate(
         maps.length,
         (i) => SqfTrade(
@@ -120,36 +120,70 @@ class TradeSqflite implements ITradeSqflite {
     }
   }
 
-  @override
-  Future<List<SqfTrade>> getCurrentMonthExpenditureTrade(
-      DateTime currentDay) async {
-    try {
-      final dateFormatter = DateFormat("yyyy年M月");
-      String result = dateFormatter.format(currentDay);
-      final Database db = await _getDatabase();
-      final List<Map<String, dynamic>> maps = await db.query(_tableName,
-          where: 'tradeDay LIKE ?', whereArgs: ['%$result%']);
-    } catch (e) {
-      rethrow;
-    }
-  }
+  // @override
+  // Future<List<SqfTrade>> getCurrentMonthExpenditureTrade() async {
+  //   try {
+  //     String result = "${_selectedDay.year}年${_selectedDay.month}月";
+  //     final Database db = await _getDatabase();
+  //     final List<Map<String, dynamic>> maps = await db.rawQuery('SELECT * FROM $_tableName WHERE tradeDay LIKE ? AND judgement = 1', ['%$result%']);
+  //     return List.generate(
+  //       maps.length,
+  //       (i) => SqfTrade(
+  //         id: maps[i]['id'],
+  //         tradeName: maps[i]['tradeName'],
+  //         amountOfMoney: maps[i]['amountOfMoney'],
+  //         judgement: maps[i]['judgement'],
+  //         memo: maps[i]['memo'],
+  //         tradeDay: maps[i]['tradeDay'],
+  //       ),
+  //     );
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 
-  @override
-  Future<List<SqfTrade>> getCurrentMonthReveneTrade() {
-    // TODO: implement getCurrentMonthReveneTrade
-    throw UnimplementedError();
-  }
+  // @override
+  // Future<List<SqfTrade>> getCurrentMonthReveneTrade() async {
+  //   try {
+  //     String result = "${_selectedDay.year}年${_selectedDay.month}月";
+  //     final Database db = await _getDatabase();
+  //     final List<Map<String, dynamic>> maps = await db.rawQuery('SELECT * FROM $_tableName WHERE tradeDay LIKE ? AND judgement = 0', ['%$result%']);
+  //     return List.generate(
+  //       maps.length,
+  //       (i) => SqfTrade(
+  //         id: maps[i]['id'],
+  //         tradeName: maps[i]['tradeName'],
+  //         amountOfMoney: maps[i]['amountOfMoney'],
+  //         judgement: maps[i]['judgement'],
+  //         memo: maps[i]['memo'],
+  //         tradeDay: maps[i]['tradeDay'],
+  //       ),
+  //     );
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 
-  @override
-  Future<List<SqfTrade>> getCurrentMonthTrade(DateTime currentDay) async {
-    try {
-      final dateFormatter = DateFormat("yyyy年M月");
-      String result = dateFormatter.format(currentDay);
-      final Database db = await _getDatabase();
-      final List<Map<String, dynamic>> maps = await db.query(_tableName,
-          where: 'tradeDay LIKE ?', whereArgs: ['%$result%']);
-    } catch (e) {
-      rethrow;
-    }
-  }
+  // @override
+  // Future<List<SqfTrade>> getCurrentMonthTrade() async {
+  //   try {
+  //     final dateFormatter = DateFormat("yyyy年M月");
+  //     String result = dateFormatter.format(_selectedDay);
+  //     final Database db = await _getDatabase();
+  //     final List<Map<String, dynamic>> maps = await db.query(_tableName, where: 'tradeDay LIKE ?', whereArgs: ['%$result%']);
+  //     return List.generate(
+  //       maps.length,
+  //       (i) => SqfTrade(
+  //         id: maps[i]['id'],
+  //         tradeName: maps[i]['tradeName'],
+  //         amountOfMoney: maps[i]['amountOfMoney'],
+  //         judgement: maps[i]['judgement'],
+  //         memo: maps[i]['memo'],
+  //         tradeDay: maps[i]['tradeDay'],
+  //       ),
+  //     );
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 }
