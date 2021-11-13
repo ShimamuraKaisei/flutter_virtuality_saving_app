@@ -24,9 +24,6 @@ class ScreenPage extends HookWidget {
     ];
     final indexNav = useProvider(bottomNavigationController);
     return Scaffold(
-      appBar: AppBar(
-        title: TradeSwitingButton(),
-      ),
       body: _screens[indexNav.indexState],
       bottomNavigationBar: ScreenBottomNavigationBar(),
     );

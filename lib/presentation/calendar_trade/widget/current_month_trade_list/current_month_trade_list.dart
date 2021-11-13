@@ -9,6 +9,24 @@ class CurrentMonthTradeList extends HookWidget {
   Widget build(BuildContext context) {
     final tradeInteractorData = useProvider(tradeInteractrorProvider);
     final tradeInteractor = useProvider(tradeInteractrorProvider.notifier);
-    return Container();
+    return Expanded(
+      child: tradeInteractorData.when(
+        data: (data) => ListView.builder(
+            itemCount: data.currentMonthTrade.length,
+            itemBuilder: (context, int index) {
+              return Card(
+                child: ListTile(
+                  title: Text(data.currentMonthTrade[index].tradeName!),
+                  onTap: () => tradeInteractor.deleteTrade(id: data.currentMonthTrade[index].id!),
+                  subtitle: Text(data.currentMonthTrade[index].tradeDay!),
+                ),
+              );
+            }),
+        loading: () => Center(
+          child: CircularProgressIndicator(),
+        ),
+        error: (error, stackTrace) => Text("エラー"),
+      ),
+    );
   }
 }

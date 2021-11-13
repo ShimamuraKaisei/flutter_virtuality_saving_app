@@ -25,7 +25,7 @@ class CalendarTrade extends HookWidget {
       onDaySelected: (selectedDay, focuseDay) {
         if (!isSameDay(_selectedDay, selectedDay)) {
           context.read(calendarTradeController.notifier).getCurrentDate(selectedDay);
-          tradeInteractor.getCurrentMonthTrade(_selectedDay); //ここでタップされた月のリストを取得
+          tradeInteractor.getCurrentMonthTrade(selectedDay); //ここでタップされた月のリストを取得
         }
       },
     );
