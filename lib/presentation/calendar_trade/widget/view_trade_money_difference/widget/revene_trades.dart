@@ -11,21 +11,21 @@ class ReveneTrades extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final tradeInteractorData = useProvider(tradeInteractrorProvider);
+    int sum;
     return Container(
       child: Column(
         children: [
-          Text("支出"),
+          Text("収支"),
           Container(
             // TODO: ⏬表示されている月の収支額を表示するように修正
             child: tradeInteractorData.when(
               data: (data) {
                 try {
-                  final sum = data.reveneTrade
-                      .map((trade) => trade.amountOfMoney)
-                      .reduce((a, b) => a! + b!);
+                  sum = data.reveneTrade.map((trade) => trade.amountOfMoney).reduce((a, b) => a! + b!)!;
                   return Text(sum.toString() + "円");
                 } catch (e) {
-                  return Text("0円");
+                  sum = 0;
+                  return Text(sum.toString() + "円");
                 }
               },
               loading: () {

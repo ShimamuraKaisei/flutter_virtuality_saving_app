@@ -10,7 +10,6 @@ import 'package:flutter_virtuality_saving_app/presentation/calendar_trade/widget
 class TradeSqflite implements ITradeSqflite {
   //implementsすることで定義忘れがあるとエラー文がでる
   static const _tableName = 'trade';
-
   Future<Database> _getDatabase() async {
     final Future<Database> _database = openDatabase(
       join(await getDatabasesPath(), 'trade_database5.db'),
@@ -163,27 +162,25 @@ class TradeSqflite implements ITradeSqflite {
   //     rethrow;
   //   }
   // }
-
-  // @override
-  // Future<List<SqfTrade>> getCurrentMonthTrade() async {
-  //   try {
-  //     final dateFormatter = DateFormat("yyyy年M月");
-  //     String result = dateFormatter.format(_selectedDay);
-  //     final Database db = await _getDatabase();
-  //     final List<Map<String, dynamic>> maps = await db.query(_tableName, where: 'tradeDay LIKE ?', whereArgs: ['%$result%']);
-  //     return List.generate(
-  //       maps.length,
-  //       (i) => SqfTrade(
-  //         id: maps[i]['id'],
-  //         tradeName: maps[i]['tradeName'],
-  //         amountOfMoney: maps[i]['amountOfMoney'],
-  //         judgement: maps[i]['judgement'],
-  //         memo: maps[i]['memo'],
-  //         tradeDay: maps[i]['tradeDay'],
-  //       ),
-  //     );
-  //   } catch (e) {
-  //     rethrow;
-  //   }
-  // }
+  @override
+  Future<List<SqfTrade>> getCurrentMonthTrade(DateTime _selectedDay) async {
+    try {
+      String result = "${_selectedDay.year}年${_selectedDay.month}月";
+      final Database db = await _getDatabase();
+      final List<Map<String, dynamic>> maps = await db.query(_tableName, where: 'tradeDay LIKE ?', whereArgs: ['%$result%']);
+      return List.generate(
+        maps.length,
+        (i) => SqfTrade(
+          id: maps[i]['id'],
+          tradeName: maps[i]['tradeName'],
+          amountOfMoney: maps[i]['amountOfMoney'],
+          judgement: maps[i]['judgement'],
+          memo: maps[i]['memo'],
+          tradeDay: maps[i]['tradeDay'],
+        ),
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

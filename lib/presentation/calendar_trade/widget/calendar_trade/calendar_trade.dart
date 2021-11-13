@@ -3,12 +3,14 @@ import 'package:flutter_virtuality_saving_app/presentation/calendar_trade/widget
 import 'package:table_calendar/table_calendar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_virtuality_saving_app/interactor/trade/trade_interactor_provider.dart';
 
 class CalendarTrade extends HookWidget {
   const CalendarTrade({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _selectedDay = useProvider(calendarTradeController).selectedDay;
+    final tradeInteractor = useProvider(tradeInteractrorProvider.notifier);
     return TableCalendar(
       locale: 'ja_JP',
       focusedDay: _selectedDay, //Stateクラスの方で現在日に初期化している
@@ -22,9 +24,8 @@ class CalendarTrade extends HookWidget {
       },
       onDaySelected: (selectedDay, focuseDay) {
         if (!isSameDay(_selectedDay, selectedDay)) {
-          context
-              .read(calendarTradeController.notifier)
-              .getCurrentDate(selectedDay);
+          context.read(calendarTradeController.notifier).getCurrentDate(selectedDay);
+          tradeInteractor.getCurrentMonthTrade(_selectedDay); //ここでタップされた月のリストを取得
         }
       },
     );

@@ -9,8 +9,7 @@ class TradeMemoTextField extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final memoController =
-        useProvider(tradeMemoTextFieldController).textEdtingController;
+    final memoController = useProvider(tradeMemoTextFieldController).textEdtingController;
     return TextFieldCard(textEditingController: memoController, title: "メモ");
   }
 }

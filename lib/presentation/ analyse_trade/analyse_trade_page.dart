@@ -20,8 +20,7 @@ class AnalyseTradePage extends HookWidget {
             return Card(
               child: ListTile(
                 title: Text(data.trades[index].tradeName!),
-                onTap: () =>
-                    tradeInterActor.deleteTrade(id: data.trades[index].id!),
+                onTap: () => tradeInterActor.deleteTrade(id: data.trades[index].id!),
                 subtitle: Text(data.trades[index].tradeDay!),
               ),
             );

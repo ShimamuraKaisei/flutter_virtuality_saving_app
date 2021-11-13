@@ -1,5 +1,6 @@
 import 'package:flutter_virtuality_saving_app/domain/entity/trade/trade.dart';
 import 'package:flutter_virtuality_saving_app/domain/repository/i_trade_repository.dart';
+import 'package:flutter_virtuality_saving_app/presentation/calendar_trade/widget/calendar_trade/calendar_trade_state.dart';
 
 class TradeInteractorState {
   ITradeRepository repository;

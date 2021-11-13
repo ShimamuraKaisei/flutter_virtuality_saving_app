@@ -10,6 +10,7 @@ class ExpenditureTrades extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final tradeInteractorData = useProvider(tradeInteractrorProvider);
+    int sum;
     return Container(
       child: Column(
         children: [
@@ -18,12 +19,11 @@ class ExpenditureTrades extends HookWidget {
             child: tradeInteractorData.when(
               data: (data) {
                 try {
-                  final sum = data.expenditureTrade
-                      .map((trade) => trade.amountOfMoney)
-                      .reduce((a, b) => a! + b!);
+                  sum = data.expenditureTrade.map((trade) => trade.amountOfMoney).reduce((a, b) => a! + b!)!;
                   return Text(sum.toString() + "円");
                 } catch (e) {
-                  return Text("0円");
+                  sum = 0;
+                  return Text(sum.toString() + "円");
                 }
               },
               loading: () {
