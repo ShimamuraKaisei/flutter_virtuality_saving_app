@@ -19,7 +19,7 @@ class ExpenditureTrades extends HookWidget {
             child: tradeInteractorData.when(
               data: (data) {
                 try {
-                  sum = data.expenditureTrade.map((trade) => trade.amountOfMoney).reduce((a, b) => a! + b!)!;
+                  sum = data.currentMonthExpenditureTrade.map((trade) => trade.amountOfMoney).reduce((a, b) => a! + b!)!;
                   return Text(sum.toString() + "円");
                 } catch (e) {
                   sum = 0;

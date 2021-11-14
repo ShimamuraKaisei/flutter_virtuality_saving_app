@@ -1,15 +1,14 @@
 import 'package:flutter_virtuality_saving_app/domain/entity/trade/trade.dart';
 import 'package:flutter_virtuality_saving_app/domain/repository/i_trade_repository.dart';
 import 'package:flutter_virtuality_saving_app/interactor/trade/trade_interactor_state.dart';
-import 'package:flutter_virtuality_saving_app/presentation/calendar_trade/widget/calendar_trade/calendar_trade_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_virtuality_saving_app/presentation/calendar_trade/widget/calendar_trade/clendar_trade_controller.dart';
 
 class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
   TradeInteractor({required ITradeRepository repository})
       : _repository = repository,
         super(const AsyncLoading()) {
-    getTradeAll();
+    getTradeAll(DateTime.now());
+    // getCurrentMonthTrade(DateTime.now()); //強引な初期化
   }
   final ITradeRepository _repository;
 
@@ -30,45 +29,29 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
       tradeDay: tradeDay,
     );
     await _repository.add(trade);
-    getTradeAll(); //【 追加した後にリスト内を更新 】⏩後で修正
+    getTradeAll(DateTime.now()); //【 追加した後にリスト内を更新 】⏩後で修正
   }
 
   Future<void> deleteTrade({required String id}) async {
     await _repository.delete(id);
-    getTradeAll(); //【 データを消した後にリスト内を更新 】
+    getTradeAll(DateTime.now()); //【 データを消した後にリスト内を更新 】
   }
 
-  Future<void> getTradeAll() async {
+  Future<void> getTradeAll(DateTime selectedday) async {
     final trades = await _repository.getTradeAll();
     final expenditureTrades = await _repository.getExpenditureTrade();
     final reveneTrades = await _repository.getReveneTrade();
-    // final currentMonthExpenditureTrades = await _repository.getCurrentMonthExpenditureTrade();
-    // final currentMonthReveneTrades = await _repository.getCurrentMonthReveneTrade();
-    // final currentMonthTrades = await _repository.getCurrentMonthTrade();
+    final currentMonthTrades = await _repository.getCurrentMonthTrade(selectedday);
+    final currentMonthExpenditureTrades = await _repository.getCurrentMonthExpenditureTrade(selectedday);
+    final currentMonthReveneTrades = await _repository.getCurrentMonthReveneTrade(selectedday);
     state = AsyncData(TradeInteractorState(
       repository: _repository,
       trades: trades,
       expenditureTrade: expenditureTrades,
       reveneTrade: reveneTrades,
-      currentMonghReveneTrade: [],
-      currentMonthExpenditureTrade: [],
-      currentMonthTrade: [],
-    ));
-  }
-
-  Future<void> getCurrentMonthTrade(DateTime day) async {
-    final currentMonthTrade = await _repository.getCurrentMonthTrade(day);
-    final expenditureTrades = await _repository.getExpenditureTrade();
-    final reveneTrades = await _repository.getReveneTrade();
-    final trades = await _repository.getTradeAll();
-    state = AsyncData(TradeInteractorState(
-      repository: _repository,
-      trades: trades,
-      expenditureTrade: expenditureTrades,
-      reveneTrade: reveneTrades,
-      currentMonthExpenditureTrade: [],
-      currentMonghReveneTrade: [],
-      currentMonthTrade: currentMonthTrade,
+      currentMonghReveneTrade: currentMonthReveneTrades,
+      currentMonthExpenditureTrade: currentMonthExpenditureTrades,
+      currentMonthTrade: currentMonthTrades,
     ));
   }
   //①アップデート関数

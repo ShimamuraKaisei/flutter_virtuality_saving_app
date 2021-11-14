@@ -7,29 +7,35 @@ class VirtualSavings extends HookWidget {
   const VirtualSavings({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final tradeInteractorData = useProvider(tradeInteractrorProvider);
+    int sumRevene = 0;
+    int sumExpenditure = 0;
+    int balance;
     return Container(
       child: Column(
         children: [
           Text("仮想貯金額"),
           Container(
-            // TODO: ⏬表示されている月の収支額を表示するように修正
             child: tradeInteractorData.when(
               data: (data) {
                 try {
-                  final sumRevene = data.reveneTrade
-                      .map((trade) => trade.amountOfMoney)
-                      .reduce((a, b) => a! + b!);
-                  final sumExpenditure = data.expenditureTrade
-                      .map((trade) => trade.amountOfMoney)
-                      .reduce((a, b) => a! + b!);
-                  final balance = sumRevene! - sumExpenditure!;
+                  try {
+                    sumRevene = data.currentMonghReveneTrade.map((trade) => trade.amountOfMoney).reduce((a, b) => a! + b!)!;
+                  } catch (e) {
+                    sumRevene = 0;
+                  }
+                  try {
+                    sumExpenditure = data.currentMonthExpenditureTrade.map((trade) => trade.amountOfMoney).reduce((a, b) => a! + b!)!;
+                  } catch (e) {
+                    sumExpenditure = 0;
+                  }
+                  balance = sumRevene - sumExpenditure;
                   return Text(balance.toString() + "円");
                 } catch (e) {
-                  return Text("0円");
+                  balance = sumRevene - sumExpenditure;
+                  return Text(balance.toString() + "円");
                 }
               },
               loading: () {

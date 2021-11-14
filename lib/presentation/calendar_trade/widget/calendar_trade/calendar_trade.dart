@@ -16,7 +16,16 @@ class CalendarTrade extends HookWidget {
       focusedDay: _selectedDay, //Stateクラスの方で現在日に初期化している
       firstDay: DateTime.utc(2000, 1, 1),
       lastDay: DateTime.utc(2200, 12, 31),
-      headerStyle: HeaderStyle(formatButtonVisible: false), //フォーマット変更ボタンの非表示
+      headerStyle: HeaderStyle(
+        titleTextStyle: TextStyle(fontSize: 25),
+        formatButtonVisible: false, //フォーマット変更ボタンの非表示
+        titleCentered: true,
+        decoration: BoxDecoration(
+          color: Colors.blue,
+        ),
+        headerPadding: EdgeInsets.all(10),
+      ),
+      daysOfWeekHeight: 18, //曜日の文字の下部分が見切れるため
       rowHeight: 38, //カレンダー縦の余白
       selectedDayPredicate: (day) {
         //どの日が現在選択されているか
@@ -25,11 +34,10 @@ class CalendarTrade extends HookWidget {
       onDaySelected: (selectedDay, focuseDay) {
         if (!isSameDay(_selectedDay, selectedDay)) {
           context.read(calendarTradeController.notifier).getCurrentDate(selectedDay);
-          //tradeInteractor.getCurrentMonthTrade(selectedDay); //ここでタップされた月のリストを取得
         }
       },
       onPageChanged: (day) {
-        tradeInteractor.getCurrentMonthTrade(day);
+        tradeInteractor.getTradeAll(day); //表示している月のリストを取得
       },
     );
   }

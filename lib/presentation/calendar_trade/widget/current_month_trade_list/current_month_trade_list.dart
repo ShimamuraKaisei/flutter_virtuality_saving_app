@@ -12,16 +12,17 @@ class CurrentMonthTradeList extends HookWidget {
     return Expanded(
       child: tradeInteractorData.when(
         data: (data) => ListView.builder(
-            itemCount: data.currentMonthTrade.length,
-            itemBuilder: (context, int index) {
-              return Card(
-                child: ListTile(
-                  title: Text(data.currentMonthTrade[index].tradeName!),
-                  onTap: () => tradeInteractor.deleteTrade(id: data.currentMonthTrade[index].id!),
-                  subtitle: Text(data.currentMonthTrade[index].tradeDay!),
-                ),
-              );
-            }),
+          itemCount: data.currentMonthTrade.length,
+          itemBuilder: (context, int index) {
+            return Card(
+              child: ListTile(
+                title: Text(data.currentMonthTrade[index].tradeName!),
+                onTap: () => tradeInteractor.deleteTrade(id: data.currentMonthTrade[index].id!),
+                subtitle: Text(data.currentMonthTrade[index].tradeDay!),
+              ),
+            );
+          },
+        ),
         loading: () => Center(
           child: CircularProgressIndicator(),
         ),

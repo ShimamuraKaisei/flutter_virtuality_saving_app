@@ -56,25 +56,25 @@ class TradeRepositoryImpl implements ITradeRepository {
     }
   }
 
-  // @override
-  // Future<List<Trade>> getCurrentMonthExpenditureTrade() async {
-  //   try {
-  //     final data = await _sqf.getCurrentMonthExpenditureTrade();
-  //     return data.map((e) => e.toEntity()).toList();
-  //   } catch (e) {
-  //     rethrow;
-  //   }
-  // }
+  @override
+  Future<List<Trade>> getCurrentMonthExpenditureTrade(DateTime day) async {
+    try {
+      final data = await _sqf.getCurrentMonthExpenditureTrade(day);
+      return data.map((e) => e.toEntity()).toList();
+    } catch (e) {
+      rethrow;
+    }
+  }
 
-  // @override
-  // Future<List<Trade>> getCurrentMonthReveneTrade() async {
-  //   try {
-  //     final data = await _sqf.getCurrentMonthReveneTrade();
-  //     return data.map((e) => e.toEntity()).toList();
-  //   } catch (e) {
-  //     rethrow;
-  //   }
-  // }
+  @override
+  Future<List<Trade>> getCurrentMonthReveneTrade(DateTime day) async {
+    try {
+      final data = await _sqf.getCurrentMonthReveneTrade(day);
+      return data.map((e) => e.toEntity()).toList();
+    } catch (e) {
+      rethrow;
+    }
+  }
 
   @override
   Future<List<Trade>> getCurrentMonthTrade(DateTime day) async {

@@ -6,7 +6,7 @@ abstract class ITradeRepository {
   Future<List<Trade>> getTradeAll();
   Future<List<Trade>> getCurrentMonthTrade(DateTime day);
   Future<List<Trade>> getReveneTrade();
-  // Future<List<Trade>> getCurrentMonthReveneTrade();
+  Future<List<Trade>> getCurrentMonthReveneTrade(DateTime day);
   Future<List<Trade>> getExpenditureTrade();
-  // Future<List<Trade>> getCurrentMonthExpenditureTrade();
+  Future<List<Trade>> getCurrentMonthExpenditureTrade(DateTime day);
 }

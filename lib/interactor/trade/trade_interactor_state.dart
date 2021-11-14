@@ -8,8 +8,8 @@ class TradeInteractorState {
   List<Trade> expenditureTrade; //支出の全データ
   List<Trade> reveneTrade; //収支の全データ
   List<Trade> currentMonthTrade;
-  List<Trade> currentMonthExpenditureTrade; //TODO:カレンダーページで表示している月の支出の全データリスト作成
-  List<Trade> currentMonghReveneTrade; //TODO:カレンダーページで表示している月の収支の全データリスト作成
+  List<Trade> currentMonthExpenditureTrade;
+  List<Trade> currentMonghReveneTrade;
 
   TradeInteractorState({
     required this.repository,

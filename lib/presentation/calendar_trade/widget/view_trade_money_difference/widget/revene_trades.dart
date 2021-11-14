@@ -17,11 +17,10 @@ class ReveneTrades extends HookWidget {
         children: [
           Text("収支"),
           Container(
-            // TODO: ⏬表示されている月の収支額を表示するように修正
             child: tradeInteractorData.when(
               data: (data) {
                 try {
-                  sum = data.reveneTrade.map((trade) => trade.amountOfMoney).reduce((a, b) => a! + b!)!;
+                  sum = data.currentMonghReveneTrade.map((trade) => trade.amountOfMoney).reduce((a, b) => a! + b!)!;
                   return Text(sum.toString() + "円");
                 } catch (e) {
                   sum = 0;
