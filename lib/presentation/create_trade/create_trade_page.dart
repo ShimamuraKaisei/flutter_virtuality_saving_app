@@ -8,7 +8,8 @@ import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/t
 
 //取引（貯金 or 支出 ）追加画面
 class TradeCreatePage extends StatelessWidget {
-  const TradeCreatePage({Key? key}) : super(key: key);
+  const TradeCreatePage({Key? key, required this.day}) : super(key: key);
+  final DateTime day;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +25,7 @@ class TradeCreatePage extends StatelessWidget {
               TradeNameTextField(),
               TradeMoneyTextField(),
               TradeMemoTextField(),
-              TradeSelectDateField(),
+              TradeSelectDateField(day: day),
               TradeCreateButton(),
             ],
           ),

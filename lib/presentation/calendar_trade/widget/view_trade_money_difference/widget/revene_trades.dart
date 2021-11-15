@@ -7,7 +7,6 @@ class ReveneTrades extends HookWidget {
   const ReveneTrades({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     final tradeInteractorData = useProvider(tradeInteractrorProvider);
@@ -21,10 +20,16 @@ class ReveneTrades extends HookWidget {
               data: (data) {
                 try {
                   sum = data.currentMonghReveneTrade.map((trade) => trade.amountOfMoney).reduce((a, b) => a! + b!)!;
-                  return Text(sum.toString() + "円");
+                  return Text(
+                    sum.toString() + "円",
+                    style: TextStyle(color: Colors.greenAccent[700]),
+                  );
                 } catch (e) {
                   sum = 0;
-                  return Text(sum.toString() + "円");
+                  return Text(
+                    sum.toString() + "円",
+                    style: TextStyle(color: Colors.greenAccent[700]),
+                  );
                 }
               },
               loading: () {

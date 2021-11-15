@@ -32,7 +32,10 @@ class VirtualSavings extends HookWidget {
                     sumExpenditure = 0;
                   }
                   balance = sumRevene - sumExpenditure;
-                  return Text(balance.toString() + "円");
+                  return Text(
+                    balance.toString() + "円",
+                    style: TextStyle(color: balance > 0 ? Colors.greenAccent[700] : Colors.redAccent),
+                  );
                 } catch (e) {
                   balance = sumRevene - sumExpenditure;
                   return Text(balance.toString() + "円");

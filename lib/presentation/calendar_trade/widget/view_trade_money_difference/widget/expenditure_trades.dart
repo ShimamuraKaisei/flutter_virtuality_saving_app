@@ -20,10 +20,16 @@ class ExpenditureTrades extends HookWidget {
               data: (data) {
                 try {
                   sum = data.currentMonthExpenditureTrade.map((trade) => trade.amountOfMoney).reduce((a, b) => a! + b!)!;
-                  return Text(sum.toString() + "円");
+                  return Text(
+                    sum.toString() + "円",
+                    style: TextStyle(color: Colors.redAccent),
+                  );
                 } catch (e) {
                   sum = 0;
-                  return Text(sum.toString() + "円");
+                  return Text(
+                    sum.toString() + "円",
+                    style: TextStyle(color: Colors.redAccent),
+                  );
                 }
               },
               loading: () {

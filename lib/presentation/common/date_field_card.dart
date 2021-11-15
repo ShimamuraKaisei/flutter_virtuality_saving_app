@@ -7,7 +7,8 @@ import 'package:intl/intl.dart';
 //取引金額、取引名、メモを入力するTextFieldを囲うCardWidget
 class DateFieldCard extends HookWidget {
   final String title;
-  const DateFieldCard({Key? key, required this.title}) : super(key: key);
+  final DateTime day;
+  const DateFieldCard({Key? key, required this.title, required this.day}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final selectedDate = useProvider(tradeSelectController).selectedDate;
@@ -15,19 +16,19 @@ class DateFieldCard extends HookWidget {
     return Container(
       child: Column(
         children: [
-          SizedBox(height: 40),
+          SizedBox(height: 20),
           Text(title),
           InkWell(
             child: SizedBox(
               width: double.infinity,
-              height: 49,
+              height: 55,
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Center(
                   child: Text(
-                    DateFormat('yyyy年M月d日').format(selectedDate!),
+                    DateFormat('yyyy年M月d日').format(day),
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 25),
                   ),

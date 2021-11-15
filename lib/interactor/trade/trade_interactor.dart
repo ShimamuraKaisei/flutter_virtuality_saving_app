@@ -8,7 +8,6 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
       : _repository = repository,
         super(const AsyncLoading()) {
     getTradeAll(DateTime.now());
-    // getCurrentMonthTrade(DateTime.now()); //強引な初期化
   }
   final ITradeRepository _repository;
 
