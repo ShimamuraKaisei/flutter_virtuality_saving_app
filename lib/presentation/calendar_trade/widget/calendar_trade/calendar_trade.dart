@@ -26,8 +26,35 @@ class CalendarTrade extends HookWidget {
         ),
         headerPadding: EdgeInsets.all(10),
       ),
-      daysOfWeekHeight: 18, //曜日の文字の下部分が見切れるため
+      daysOfWeekHeight: 20, //曜日の文字の下部分が見切れるため
+      daysOfWeekStyle: DaysOfWeekStyle(
+        //曜日名ヘッダーのスタイル変更
+        decoration: BoxDecoration(
+          color: Colors.grey[350],
+        ),
+        weekdayStyle: TextStyle(color: Colors.black),
+        weekendStyle: TextStyle(color: Colors.red),
+      ),
       rowHeight: 38, //カレンダー縦の余白
+      calendarStyle: CalendarStyle(
+        tableBorder: TableBorder.all(),
+        selectedDecoration: BoxDecoration(color: Colors.amber[200]),
+        selectedTextStyle: TextStyle(color: Colors.black),
+        defaultDecoration: BoxDecoration(
+          border: Border.all(),
+        ),
+        todayDecoration: BoxDecoration(
+          border: Border.all(),
+        ),
+        outsideDecoration: BoxDecoration(
+          border: Border.all(),
+        ),
+        weekendDecoration: BoxDecoration(
+          border: Border.all(),
+        ),
+        todayTextStyle: TextStyle(color: Colors.black),
+        cellMargin: EdgeInsets.zero,
+      ),
       selectedDayPredicate: (day) {
         //どの日が現在選択されているか
         return isSameDay(_selectedDay, day);
