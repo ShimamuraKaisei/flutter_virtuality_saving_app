@@ -14,11 +14,13 @@ class CurrentMonthTradeList extends HookWidget {
         data: (data) => ListView.builder(
           itemCount: data.currentMonthTrade.length,
           itemBuilder: (context, int index) {
-            return Card(
-              child: ListTile(
-                title: Text(data.currentMonthTrade[index].tradeName!),
-                onTap: () => tradeInteractor.deleteTrade(id: data.currentMonthTrade[index].id!),
-                subtitle: Text(data.currentMonthTrade[index].tradeDay!),
+            return Container(
+              child: Card(
+                child: ListTile(
+                  title: Text(data.currentMonthTrade[index].tradeName!),
+                  onTap: () => tradeInteractor.deleteTrade(id: data.currentMonthTrade[index].id!),
+                  subtitle: Text(data.currentMonthTrade[index].tradeDay!),
+                ),
               ),
             );
           },

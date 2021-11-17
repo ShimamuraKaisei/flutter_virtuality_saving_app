@@ -43,15 +43,17 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
     final currentMonthTrades = await _repository.getCurrentMonthTrade(selectedday);
     final currentMonthExpenditureTrades = await _repository.getCurrentMonthExpenditureTrade(selectedday);
     final currentMonthReveneTrades = await _repository.getCurrentMonthReveneTrade(selectedday);
-    state = AsyncData(TradeInteractorState(
-      repository: _repository,
-      trades: trades,
-      expenditureTrade: expenditureTrades,
-      reveneTrade: reveneTrades,
-      currentMonghReveneTrade: currentMonthReveneTrades,
-      currentMonthExpenditureTrade: currentMonthExpenditureTrades,
-      currentMonthTrade: currentMonthTrades,
-    ));
+    state = AsyncData(
+      TradeInteractorState(
+        repository: _repository,
+        trades: trades,
+        expenditureTrade: expenditureTrades,
+        reveneTrade: reveneTrades,
+        currentMonghReveneTrade: currentMonthReveneTrades,
+        currentMonthExpenditureTrade: currentMonthExpenditureTrades,
+        currentMonthTrade: currentMonthTrades,
+      ),
+    );
   }
   //①アップデート関数
 }

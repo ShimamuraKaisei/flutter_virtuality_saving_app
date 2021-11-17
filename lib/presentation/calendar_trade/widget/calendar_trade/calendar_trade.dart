@@ -41,16 +41,16 @@ class CalendarTrade extends HookWidget {
         selectedDecoration: BoxDecoration(color: Colors.amber[200]),
         selectedTextStyle: TextStyle(color: Colors.black),
         defaultDecoration: BoxDecoration(
-          border: Border.all(),
+          border: Border.all(color: Colors.black12),
         ),
         todayDecoration: BoxDecoration(
-          border: Border.all(),
+          border: Border.all(color: Colors.black12),
         ),
         outsideDecoration: BoxDecoration(
-          border: Border.all(),
+          border: Border.all(color: Colors.black12),
         ),
         weekendDecoration: BoxDecoration(
-          border: Border.all(),
+          border: Border.all(color: Colors.black12),
         ),
         todayTextStyle: TextStyle(color: Colors.black),
         cellMargin: EdgeInsets.zero,

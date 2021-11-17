@@ -11,4 +11,5 @@ abstract class ITradeSqflite {
   Future<List<SqfTrade>> getCurrentMonthExpenditureTrade(DateTime day);
   Future<List<SqfTrade>> getRevenueTradeAll(); //収入の取引だけを取得
   Future<List<SqfTrade>> getCurrentMonthReveneTrade(DateTime day);
+  Future<List<SqfTrade>> getCurrentMonthDayTrade(DateTime day);
 }

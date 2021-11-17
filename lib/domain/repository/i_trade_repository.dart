@@ -9,4 +9,5 @@ abstract class ITradeRepository {
   Future<List<Trade>> getCurrentMonthReveneTrade(DateTime day);
   Future<List<Trade>> getExpenditureTrade();
   Future<List<Trade>> getCurrentMonthExpenditureTrade(DateTime day);
+  Future<List<Trade>> getCurrentMonthDayTrade(DateTime day);
 }

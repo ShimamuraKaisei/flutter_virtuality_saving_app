@@ -85,4 +85,14 @@ class TradeRepositoryImpl implements ITradeRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<List<Trade>> getCurrentMonthDayTrade(DateTime day) async {
+    try {
+      final data = await _sqf.getCurrentMonthDayTrade(day);
+      return data.map((e) => e.toEntity()).toList();
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

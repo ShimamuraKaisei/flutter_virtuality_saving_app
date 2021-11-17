@@ -181,4 +181,26 @@ class TradeSqflite implements ITradeSqflite {
       rethrow;
     }
   }
+
+  @override
+  Future<List<SqfTrade>> getCurrentMonthDayTrade(DateTime _selectedDay) async {
+    try {
+      String result = "${_selectedDay.year}年${_selectedDay.month}月${_selectedDay.day}";
+      final Database db = await _getDatabase();
+      final List<Map<String, dynamic>> maps = await db.query(_tableName, where: 'tradeDay LIKE ?', whereArgs: ['%$result%']);
+      return List.generate(
+        maps.length,
+        (i) => SqfTrade(
+          id: maps[i]['id'],
+          tradeName: maps[i]['tradeName'],
+          amountOfMoney: maps[i]['amountOfMoney'],
+          judgement: maps[i]['judgement'],
+          memo: maps[i]['memo'],
+          tradeDay: maps[i]['tradeDay'],
+        ),
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
