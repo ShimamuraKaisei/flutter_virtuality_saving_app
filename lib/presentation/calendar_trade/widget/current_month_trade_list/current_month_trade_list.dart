@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_virtuality_saving_app/interactor/trade/trade_interactor_provider.dart';
+import 'package:intl/intl.dart';
 
 class CurrentMonthTradeList extends HookWidget {
   const CurrentMonthTradeList({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class CurrentMonthTradeList extends HookWidget {
                 child: ListTile(
                   title: Text(data.currentMonthTrade[index].tradeName!),
                   onTap: () => tradeInteractor.deleteTrade(id: data.currentMonthTrade[index].id!),
-                  subtitle: Text(data.currentMonthTrade[index].tradeDay!),
+                  subtitle: Text(DateFormat('yyyy年M月d日').format(data.currentMonthTrade[index].tradeDay!)),
                 ),
               ),
             );

@@ -17,7 +17,7 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
     required String memo,
     required int money,
     required int judgement,
-    required String tradeDay,
+    required DateTime tradeDay,
   }) async {
     final trade = Trade(
       id: id,
@@ -43,6 +43,7 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
     final currentMonthTrades = await _repository.getCurrentMonthTrade(selectedday);
     final currentMonthExpenditureTrades = await _repository.getCurrentMonthExpenditureTrade(selectedday);
     final currentMonthReveneTrades = await _repository.getCurrentMonthReveneTrade(selectedday);
+    final currentMonthDayTrades = await _repository.getCurrentMonthDayTrade(selectedday);
     state = AsyncData(
       TradeInteractorState(
         repository: _repository,
@@ -52,6 +53,7 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
         currentMonghReveneTrade: currentMonthReveneTrades,
         currentMonthExpenditureTrade: currentMonthExpenditureTrades,
         currentMonthTrade: currentMonthTrades,
+        currentMonthDayTrade: currentMonthDayTrades,
       ),
     );
   }

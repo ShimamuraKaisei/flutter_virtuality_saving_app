@@ -52,7 +52,7 @@ class TradeCreateButton extends HookWidget {
             money: int.parse(
               moneyController.textEdtingController.text,
             ),
-            tradeDay: DateFormat('yyyy年M月d日').format(tradeDateController.selectedDate!),
+            tradeDay: tradeDateController.selectedDate!,
           );
           //⏬textFieldの中身を初期化
           nameController.textEdtingController.text = "";

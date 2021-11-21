@@ -2,6 +2,7 @@
 //MpdelはEntityを拡張した子クラス
 
 import 'package:flutter_virtuality_saving_app/domain/entity/trade/trade.dart';
+import 'package:intl/intl.dart';
 
 class SqfTrade {
   //Trade Classを継承しているわけではない
@@ -20,13 +21,7 @@ class SqfTrade {
   final String memo;
   final String tradeDay;
 
-  const SqfTrade(
-      {required this.id,
-      required this.tradeName,
-      required this.amountOfMoney,
-      required this.judgement,
-      required this.memo,
-      required this.tradeDay});
+  const SqfTrade({required this.id, required this.tradeName, required this.amountOfMoney, required this.judgement, required this.memo, required this.tradeDay});
 
   //⏬検索用の関数で使用
   factory SqfTrade.fromMap(Map<String, dynamic> map) {
@@ -42,12 +37,13 @@ class SqfTrade {
   //⏬型戻し
   Trade toEntity() {
     return Trade(
-        id: id,
-        tradeName: tradeName,
-        amountOfMoney: amountOfMoney,
-        judgement: judgement,
-        memo: memo,
-        tradeDay: tradeDay);
+      id: id,
+      tradeName: tradeName,
+      amountOfMoney: amountOfMoney,
+      judgement: judgement,
+      memo: memo,
+      tradeDay: DateFormat('yyyy年M月d日').parseStrict(tradeDay),
+    );
   }
 
   //⏬SQLite使い方サイトに出てくる toMap(){~}の部分⏩データベース操作の関数内で使用

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_virtuality_saving_app/interactor/trade/trade_interactor_provider.dart';
+import 'package:intl/intl.dart';
 
 //データグラフ画面
 //SQLiteからのデータ取得ができるかリスト表示で確認
@@ -11,7 +12,7 @@ class AnalyseTradePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final tradeInteractorData = useProvider(tradeInteractrorProvider);
-    final tradeInterActor = useProvider(tradeInteractrorProvider.notifier);
+    final tradeInteractor = useProvider(tradeInteractrorProvider.notifier);
     return Scaffold(
       body: tradeInteractorData.when(
         data: (data) => ListView.builder(
@@ -20,8 +21,8 @@ class AnalyseTradePage extends HookWidget {
             return Card(
               child: ListTile(
                 title: Text(data.trades[index].tradeName!),
-                onTap: () => tradeInterActor.deleteTrade(id: data.trades[index].id!),
-                subtitle: Text(data.trades[index].tradeDay!),
+                onTap: () => tradeInteractor.deleteTrade(id: data.trades[index].id!),
+                subtitle: Text(DateFormat('yyyy年M月d日').format(data.trades[index].tradeDay!)),
               ),
             );
           },

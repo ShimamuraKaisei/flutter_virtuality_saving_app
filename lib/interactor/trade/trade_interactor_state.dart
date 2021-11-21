@@ -9,6 +9,7 @@ class TradeInteractorState {
   List<Trade> currentMonthTrade;
   List<Trade> currentMonthExpenditureTrade;
   List<Trade> currentMonghReveneTrade;
+  List<Trade> currentMonthDayTrade;
 
   TradeInteractorState({
     required this.repository,
@@ -18,5 +19,6 @@ class TradeInteractorState {
     required this.currentMonthExpenditureTrade,
     required this.currentMonghReveneTrade,
     required this.currentMonthTrade,
+    required this.currentMonthDayTrade,
   });
 }
