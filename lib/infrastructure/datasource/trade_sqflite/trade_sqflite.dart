@@ -9,7 +9,7 @@ class TradeSqflite implements ITradeSqflite {
   static const _tableName = 'trade';
   Future<Database> _getDatabase() async {
     final Future<Database> _database = openDatabase(
-      join(await getDatabasesPath(), 'trade_database5.db'),
+      join(await getDatabasesPath(), 'trade_database6.db'),
       onCreate: (db, version) async {
         await db.execute(
           // テーブルの作成

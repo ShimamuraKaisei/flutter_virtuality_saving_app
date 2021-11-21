@@ -42,7 +42,7 @@ class SqfTrade {
       amountOfMoney: amountOfMoney,
       judgement: judgement,
       memo: memo,
-      tradeDay: DateFormat('yyyy年M月d日').parseStrict(tradeDay),
+      tradeDay: DateFormat("yyyy年M月d日").parseStrict(tradeDay),
     );
   }
 
@@ -54,7 +54,7 @@ class SqfTrade {
       keyAmountOfMoney: trade.amountOfMoney,
       keyJudgement: trade.judgement,
       keyMemo: trade.memo,
-      keyTradeDay: trade.tradeDay,
+      keyTradeDay: DateFormat('yyyy年M月d日').format(trade.tradeDay!),
     };
   }
 }
