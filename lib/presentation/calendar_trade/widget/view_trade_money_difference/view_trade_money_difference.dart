@@ -9,6 +9,11 @@ class ViewTradeMoneyDifference extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: Colors.black),
+        ),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

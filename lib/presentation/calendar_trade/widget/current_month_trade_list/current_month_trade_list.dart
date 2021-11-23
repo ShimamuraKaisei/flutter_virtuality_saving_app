@@ -21,30 +21,89 @@ class CurrentMonthTradeList extends HookWidget {
                   if (i == 0)
                     Column(
                       children: [
-                        Card(
-                          child: ListTile(
-                            title: Text(DateFormat('yyyy年M月d日').format(data.currentMonthTrade[i].tradeDay!)),
+                        Container(
+                          width: double.infinity,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            color: Colors.amber[100],
+                            border: const Border(
+                              top: BorderSide(color: Colors.black),
+                            ),
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.only(left: 10, top: 2),
+                            child: Text(
+                              DateFormat('yyyy年M月d日').format(data.currentMonthTrade[i].tradeDay!),
+                            ),
                           ),
                         ),
-                        ListTile(
-                          title: Text(data.currentMonthTrade[i].tradeName!),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: const Border(
+                              top: BorderSide(color: Colors.black),
+                            ),
+                          ),
+                          child: ListTile(
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(data.currentMonthTrade[i].tradeName!),
+                                Text(data.currentMonthTrade[i].amountOfMoney.toString() + "円"),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     )
                   else if (i > 0 && data.currentMonthTrade[i].tradeDay == data.currentMonthTrade[i - 1].tradeDay)
-                    ListTile(
-                      title: Text(data.currentMonthTrade[i].tradeName!),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: const Border(top: BorderSide(color: Colors.black)),
+                      ),
+                      child: ListTile(
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(data.currentMonthTrade[i].tradeName!),
+                            Text(data.currentMonthTrade[i].amountOfMoney.toString() + "円"),
+                          ],
+                        ),
+                      ),
                     )
                   else if (i > 0 && data.currentMonthTrade[i].tradeDay != data.currentMonthTrade[i - 1].tradeDay)
                     Column(
                       children: [
-                        Card(
-                          child: ListTile(
-                            title: Text(DateFormat('yyyy年M月d日').format(data.currentMonthTrade[i].tradeDay!)),
+                        Container(
+                          width: double.infinity,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            color: Colors.amber[100],
+                            border: const Border(
+                              top: BorderSide(color: Colors.black),
+                            ),
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.only(left: 10, top: 2),
+                            child: Text(
+                              DateFormat('yyyy年M月d日').format(data.currentMonthTrade[i].tradeDay!),
+                            ),
                           ),
                         ),
-                        ListTile(
-                          title: Text(data.currentMonthTrade[i].tradeName!),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: const Border(
+                              top: BorderSide(color: Colors.black),
+                            ),
+                          ),
+                          child: ListTile(
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(data.currentMonthTrade[i].tradeName!),
+                                Text(data.currentMonthTrade[i].amountOfMoney.toString() + "円"),
+                              ],
+                            ),
+                          ),
                         )
                       ],
                     )
