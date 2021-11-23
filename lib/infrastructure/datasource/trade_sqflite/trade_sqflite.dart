@@ -203,4 +203,5 @@ class TradeSqflite implements ITradeSqflite {
       rethrow;
     }
   }
+
 }

@@ -44,7 +44,10 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
     final currentMonthExpenditureTrades = await _repository.getCurrentMonthExpenditureTrade(selectedday);
     final currentMonthReveneTrades = await _repository.getCurrentMonthReveneTrade(selectedday);
     final currentMonthDayTrades = await _repository.getCurrentMonthDayTrade(selectedday);
+    //日付による昇順（日付が古い方が上に来る）
     trades.sort((a, b) => a.tradeDay!.compareTo(b.tradeDay!));
+    currentMonthTrades.sort((a, b) => a.tradeDay!.compareTo(b.tradeDay!));
+
     state = AsyncData(
       TradeInteractorState(
         repository: _repository,

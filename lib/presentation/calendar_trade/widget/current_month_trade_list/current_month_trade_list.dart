@@ -14,14 +14,45 @@ class CurrentMonthTradeList extends HookWidget {
       child: tradeInteractorData.when(
         data: (data) => ListView.builder(
           itemCount: data.currentMonthTrade.length,
-          itemBuilder: (context, int index) {
+          itemBuilder: (context, int i) {
             return Container(
-              child: Card(
-                child: ListTile(
-                  title: Text(data.currentMonthTrade[index].tradeName!),
-                  onTap: () => tradeInteractor.deleteTrade(id: data.currentMonthTrade[index].id!),
-                  subtitle: Text(DateFormat('yyyy年M月d日').format(data.currentMonthTrade[index].tradeDay!)),
-                ),
+              child: Column(
+                children: [
+                  if (i == 0)
+                    Column(
+                      children: [
+                        Card(
+                          child: ListTile(
+                            title: Text(DateFormat('yyyy年M月d日').format(data.currentMonthTrade[i].tradeDay!)),
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(data.currentMonthTrade[i].tradeName!),
+                        ),
+                      ],
+                    )
+                  else if (i > 0 && data.currentMonthTrade[i].tradeDay == data.currentMonthTrade[i - 1].tradeDay)
+                    ListTile(
+                      title: Text(data.currentMonthTrade[i].tradeName!),
+                    )
+                  else if (i > 0 && data.currentMonthTrade[i].tradeDay != data.currentMonthTrade[i - 1].tradeDay)
+                    Column(
+                      children: [
+                        Card(
+                          child: ListTile(
+                            title: Text(DateFormat('yyyy年M月d日').format(data.currentMonthTrade[i].tradeDay!)),
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(data.currentMonthTrade[i].tradeName!),
+                        )
+                      ],
+                    )
+                  else
+                    ListTile(
+                      title: Text(data.currentMonthTrade[i].tradeName!),
+                    )
+                ],
               ),
             );
           },
