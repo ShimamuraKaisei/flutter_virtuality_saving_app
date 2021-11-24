@@ -95,4 +95,13 @@ class TradeRepositoryImpl implements ITradeRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<void> update(Trade trade) async {
+    try {
+      await _sqf.update(trade);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

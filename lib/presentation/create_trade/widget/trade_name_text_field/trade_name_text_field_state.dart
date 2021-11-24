@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
 class TradeNameTextFieldState {
-  final TextEditingController textEdtingController =
-      new TextEditingController();
+  final TextEditingController textEdtingController = new TextEditingController();
 }

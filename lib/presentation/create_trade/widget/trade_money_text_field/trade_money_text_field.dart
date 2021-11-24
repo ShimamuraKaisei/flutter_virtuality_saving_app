@@ -9,8 +9,7 @@ class TradeMoneyTextField extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final moneyController =
-        useProvider(tradeAmountMoneyTextFieldController).textEdtingController;
+    final moneyController = useProvider(tradeAmountMoneyTextFieldController).textEdtingController;
     return TextFieldCard(textEditingController: moneyController, title: "金額");
   }
 }

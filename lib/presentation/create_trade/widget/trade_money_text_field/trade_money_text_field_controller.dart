@@ -2,13 +2,9 @@ import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/t
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-final tradeAmountMoneyTextFieldController = StateNotifierProvider<
-    TradeAmountMoneyTextFieldController,
-    TradeMoneyTextFieldState>((ref) => TradeAmountMoneyTextFieldController());
+final tradeAmountMoneyTextFieldController = StateNotifierProvider<TradeAmountMoneyTextFieldController, TradeMoneyTextFieldState>((ref) => TradeAmountMoneyTextFieldController());
 
-class TradeAmountMoneyTextFieldController
-    extends StateNotifier<TradeMoneyTextFieldState> {
-  TradeAmountMoneyTextFieldController()
-      : super(TradeMoneyTextFieldState()); //初期化
+class TradeAmountMoneyTextFieldController extends StateNotifier<TradeMoneyTextFieldState> {
+  TradeAmountMoneyTextFieldController() : super(TradeMoneyTextFieldState()); //初期化
 
 }

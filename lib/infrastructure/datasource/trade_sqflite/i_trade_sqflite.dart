@@ -5,6 +5,7 @@ import 'package:flutter_virtuality_saving_app/infrastructure/datasource/trade_sq
 abstract class ITradeSqflite {
   Future<void> add(Trade trade);
   Future<void> delete(String id);
+  Future<void> update(Trade trade);
   Future<List<SqfTrade>> getTradeAll();
   Future<List<SqfTrade>> getCurrentMonthTrade(DateTime day);
   Future<List<SqfTrade>> getExpenditureTradeAll(); //支出の取引だけを取得

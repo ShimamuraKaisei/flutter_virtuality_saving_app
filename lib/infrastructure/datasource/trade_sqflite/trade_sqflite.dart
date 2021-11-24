@@ -204,4 +204,20 @@ class TradeSqflite implements ITradeSqflite {
     }
   }
 
+  @override
+  Future<void> update(Trade trade) async {
+    try {
+      final Database db = await _getDatabase();
+      final map = SqfTrade.convertToMap(trade);
+      await db.update(
+        _tableName,
+        map,
+        where: "id = ?",
+        whereArgs: [trade.id],
+        conflictAlgorithm: ConflictAlgorithm.fail,
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
