@@ -2,14 +2,10 @@ import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/t
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-final tradeSwitingButtonController = StateNotifierProvider<
-    TradeSwitingButtonStateController,
-    TradeSwitchingButtonState>((_) => TradeSwitingButtonStateController());
+final tradeSwitingButtonController = StateNotifierProvider<TradeSwitingButtonStateController, TradeSwitchingButtonState>((_) => TradeSwitingButtonStateController());
 
-class TradeSwitingButtonStateController
-    extends StateNotifier<TradeSwitchingButtonState> {
-  TradeSwitingButtonStateController()
-      : super(TradeSwitchingButtonState(indexState: 0)); //0で初期化
+class TradeSwitingButtonStateController extends StateNotifier<TradeSwitchingButtonState> {
+  TradeSwitingButtonStateController() : super(TradeSwitchingButtonState(indexState: 0)); //0で初期化
   void getCurrentIndex(int index) {
     state = TradeSwitchingButtonState(indexState: index);
   }

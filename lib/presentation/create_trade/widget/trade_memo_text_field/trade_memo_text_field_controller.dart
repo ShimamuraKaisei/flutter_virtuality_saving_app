@@ -6,6 +6,5 @@ final tradeMemoTextFieldController = StateNotifierProvider<TradeMemoTextFieldCon
 
 class TradeMemoTextFieldController extends StateNotifier<TradeMemoTextFieldState> {
   TradeMemoTextFieldController() : super(TradeMemoTextFieldState()); //初期化
-
 }
 //この中に文字数を判定する

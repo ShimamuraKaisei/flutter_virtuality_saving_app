@@ -10,6 +10,26 @@ class TradeInteractor extends StateNotifier<AsyncValue<TradeInteractorState>> {
     getTradeAll(DateTime.now());
   }
   final ITradeRepository _repository;
+  //⏬idを引数に当てることでデータベースから要素を取ってくるinteractorがあればもっと簡略的に書ける
+  Future<void> updateTrade({
+    required String id,
+    required String name,
+    required String memo,
+    required int money,
+    required int judgement,
+    required DateTime tradeDay,
+  }) async {
+    final trade = Trade(
+      id: id,
+      tradeName: name,
+      amountOfMoney: money,
+      judgement: judgement,
+      memo: memo,
+      tradeDay: tradeDay,
+    );
+    await _repository.update(trade);
+    getTradeAll(DateTime.now());
+  }
 
   Future<void> addTrade({
     required String id,

@@ -212,9 +212,8 @@ class TradeSqflite implements ITradeSqflite {
       await db.update(
         _tableName,
         map,
-        where: "id = ?",
+        where: " ${SqfTrade.keyId} = ?",
         whereArgs: [trade.id],
-        conflictAlgorithm: ConflictAlgorithm.fail,
       );
     } catch (e) {
       rethrow;
