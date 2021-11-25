@@ -28,9 +28,7 @@ class TradeSwitingButton extends HookWidget {
         },
         groupValue: indexState,
         onValueChanged: (index) {
-          context
-              .read(tradeSwitingButtonController.notifier)
-              .getCurrentIndex(index as int);
+          context.read(tradeSwitingButtonController.notifier).getCurrentIndex(index as int);
         },
       ),
     );

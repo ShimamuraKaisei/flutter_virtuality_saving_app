@@ -49,9 +49,7 @@ class TradeCreateButton extends HookWidget {
             name: nameController.textEdtingController.text,
             judgement: indexController.indexState,
             memo: tradeMemoController.textEdtingController.text,
-            money: int.parse(
-              moneyController.textEdtingController.text,
-            ),
+            money: int.parse(moneyController.textEdtingController.text),
             tradeDay: tradeDateController.selectedDate!,
           );
           //⏬textFieldの中身を初期化
