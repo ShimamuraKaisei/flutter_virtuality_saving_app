@@ -15,6 +15,7 @@ class EditTradePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: TradeSwitingButton(),
+        toolbarHeight: 70,
       ),
       backgroundColor: Colors.grey[200],
       body: Container(

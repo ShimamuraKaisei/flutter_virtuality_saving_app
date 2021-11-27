@@ -61,19 +61,22 @@ class CurrentMonthTradeList extends HookWidget {
                             context.read(tradeSelectController.notifier).selectDateOnTap(data.currentMonthTrade[i].tradeDay!);
 
                             showModalBottomSheet(
+                              enableDrag: false,
                               isScrollControlled: true,
                               context: context,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(20),
-                                ),
-                              ),
                               clipBehavior: Clip.antiAliasWithSaveLayer,
                               builder: (BuildContext context) {
                                 return Container(
-                                  height: 590,
+                                  height: 700,
                                   child: EditTradePage(day: tradeDateController.selectedDate!),
                                 );
+                              },
+                            ).whenComplete(
+                              //ModalBottomSheet()を{}内を実行
+                              () {
+                                tradeNameTextEditingController.text = "";
+                                tradeAmountMoneyController.text = "";
+                                tradeMemoController.text = "";
                               },
                             );
                           },

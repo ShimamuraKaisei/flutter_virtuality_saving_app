@@ -20,8 +20,6 @@ class CalendarTrade extends HookWidget {
     final nameController = useProvider(tradeNameTextFieldController);
     final moneyController = useProvider(tradeAmountMoneyTextFieldController);
     final tradeMemoController = useProvider(tradeMemoTextFieldController);
-    final indexController = useProvider(tradeSwitingButtonController);
-    final tradeDateController = useProvider(tradeSelectController);
     return TableCalendar(
       locale: 'ja_JP',
       focusedDay: _selectedDay, //Stateクラスの方で現在日に初期化している
@@ -72,6 +70,7 @@ class CalendarTrade extends HookWidget {
       onDaySelected: (selectedDay, focuseDay) {
         if (!isSameDay(_selectedDay, selectedDay)) {
           // context.read(calendarTradeController.notifier).getCurrentDate(selectedDay);//今の所使ってない
+          //⏬
           context.read(tradeSelectController.notifier).selectDateOnTap(selectedDay);
           nameController.textEdtingController.text = "";
           moneyController.textEdtingController.text = "";
