@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_virtuality_saving_app/presentation/calendar_trade/widget/current_month_trade_list/widget/current_month_trade_list_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_memo_text_field/trade_memo_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_money_text_field/trade_money_text_field_controller.dart';
+import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_select_date/trade_select_date_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_switing_buton/trade_switching_button_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/edit_trade/edit_trade_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -20,7 +21,9 @@ class CurrentMonthTradeList extends HookWidget {
     final tradeMemoController = useProvider(tradeMemoTextFieldController).textEdtingController;
     final tradeSwitchStateController = useProvider(tradeSwitingButtonController);
     final tradeInteractor = useProvider(tradeInteractrorProvider.notifier);
+    final selectedDayController = useProvider(tradeSelectController.notifier);
     final idController = useProvider(tradeIdController.notifier);
+    final tradeDateController = useProvider(tradeSelectController);
     return Expanded(
       child: tradeInteractorData.when(
         data: (data) => ListView.builder(
@@ -55,6 +58,8 @@ class CurrentMonthTradeList extends HookWidget {
                             tradeMemoController.text = data.currentMonthTrade[i].memo!;
                             tradeSwitchStateController.indexState = data.currentMonthTrade[i].judgement!;
                             idController.getTradeId(data.currentMonthTrade[i].id!);
+                            context.read(tradeSelectController.notifier).selectDateOnTap(data.currentMonthTrade[i].tradeDay!);
+
                             showModalBottomSheet(
                               isScrollControlled: true,
                               context: context,
@@ -67,11 +72,11 @@ class CurrentMonthTradeList extends HookWidget {
                               builder: (BuildContext context) {
                                 return Container(
                                   height: 590,
-                                  child: EditTradePage(day: data.currentMonthTrade[i].tradeDay!),
+                                  child: EditTradePage(day: tradeDateController.selectedDate!),
                                 );
                               },
                             );
-                          }, //TODO:編集ページへの画面遷移を予定
+                          },
                           child: Container(
                             decoration: BoxDecoration(
                               border: const Border(
@@ -98,23 +103,9 @@ class CurrentMonthTradeList extends HookWidget {
                         tradeAmountMoneyController.text = data.currentMonthTrade[i].amountOfMoney!.toString();
                         tradeMemoController.text = data.currentMonthTrade[i].memo!;
                         tradeSwitchStateController.indexState = data.currentMonthTrade[i].judgement!;
+                        idController.getTradeId(data.currentMonthTrade[i].id!);
 
-                        showModalBottomSheet(
-                          isScrollControlled: true,
-                          context: context,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(20),
-                            ),
-                          ),
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          builder: (BuildContext context) {
-                            return Container(
-                              height: 590,
-                              child: EditTradePage(day: data.currentMonthTrade[i].tradeDay!),
-                            );
-                          },
-                        );
+                        selectedDayController.selectDateOnTap(data.currentMonthTrade[i].tradeDay!);
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -156,6 +147,8 @@ class CurrentMonthTradeList extends HookWidget {
                             tradeAmountMoneyController.text = data.currentMonthTrade[i].amountOfMoney!.toString();
                             tradeMemoController.text = data.currentMonthTrade[i].memo!;
                             tradeSwitchStateController.indexState = data.currentMonthTrade[i].judgement!;
+                            idController.getTradeId(data.currentMonthTrade[i].id!);
+                            selectedDayController.selectDateOnTap(data.currentMonthTrade[i].tradeDay!);
                             showModalBottomSheet(
                               isScrollControlled: true,
                               context: context,
@@ -166,7 +159,10 @@ class CurrentMonthTradeList extends HookWidget {
                               ),
                               clipBehavior: Clip.antiAliasWithSaveLayer,
                               builder: (BuildContext context) {
-                                return Container(height: 590, child: EditTradePage(day: data.currentMonthTrade[i].tradeDay!));
+                                return Container(
+                                  height: 590,
+                                  child: EditTradePage(day: tradeDateController.selectedDate!),
+                                );
                               },
                             );
                           },

@@ -28,7 +28,7 @@ class DateFieldCard extends HookWidget {
                 ),
                 child: Center(
                   child: Text(
-                    DateFormat('yyyy年M月d日').format(day),
+                    DateFormat('yyyy年M月d日').format(selectedDate!),
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 25),
                   ),
