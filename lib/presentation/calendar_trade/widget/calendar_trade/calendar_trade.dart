@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_virtuality_saving_app/presentation/calendar_trade/widget/calendar_trade/clendar_trade_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/create_trade_page.dart';
+import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_memo_text_field/trade_memo_text_field_controller.dart';
+import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_money_text_field/trade_money_text_field_controller.dart';
+import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_name_text_field/trade_name_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_select_date/trade_select_date_controller.dart';
+import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_switing_buton/trade_switching_button_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -13,6 +17,11 @@ class CalendarTrade extends HookWidget {
   Widget build(BuildContext context) {
     final _selectedDay = useProvider(calendarTradeController).selectedDay;
     final tradeInteractor = useProvider(tradeInteractrorProvider.notifier);
+    final nameController = useProvider(tradeNameTextFieldController);
+    final moneyController = useProvider(tradeAmountMoneyTextFieldController);
+    final tradeMemoController = useProvider(tradeMemoTextFieldController);
+    final indexController = useProvider(tradeSwitingButtonController);
+    final tradeDateController = useProvider(tradeSelectController);
     return TableCalendar(
       locale: 'ja_JP',
       focusedDay: _selectedDay, //Stateクラスの方で現在日に初期化している
@@ -62,8 +71,12 @@ class CalendarTrade extends HookWidget {
       },
       onDaySelected: (selectedDay, focuseDay) {
         if (!isSameDay(_selectedDay, selectedDay)) {
-          context.read(calendarTradeController.notifier).getCurrentDate(selectedDay);
+          // context.read(calendarTradeController.notifier).getCurrentDate(selectedDay);//今の所使ってない
           context.read(tradeSelectController.notifier).selectDateOnTap(selectedDay);
+          nameController.textEdtingController.text = "";
+          moneyController.textEdtingController.text = "";
+          tradeMemoController.textEdtingController.text = "";
+
           showModalBottomSheet(
             isScrollControlled: true,
             context: context,
