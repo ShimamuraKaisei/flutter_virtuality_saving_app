@@ -4,6 +4,7 @@ import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/t
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_name_text_field/trade_name_text_field.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_select_date/trade_select_date.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_switing_buton/trade_switching_button.dart';
+import 'package:flutter_virtuality_saving_app/presentation/edit_trade/widget/trade_delete_button/trade_delete_button.dart';
 import 'package:flutter_virtuality_saving_app/presentation/edit_trade/widget/trade_edit_button/trade_edit_button.dart';
 
 //Trade要素をタップした際に表示する【編集、保存、削除】のための画面
@@ -32,6 +33,7 @@ class EditTradePage extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: TradeDeleteButton(),
     );
   }
 }
