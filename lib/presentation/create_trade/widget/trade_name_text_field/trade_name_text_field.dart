@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_virtuality_saving_app/presentation/common/text_field_card.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_name_text_field/trade_name_text_field_controller.dart';
@@ -9,6 +10,11 @@ class TradeNameTextField extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final nameController = useProvider(tradeNameTextFieldController).textEdtingController;
-    return TextFieldCard(textEditingController: nameController, title: "取引名");
+    return TextFieldCard(
+      textEditingController: nameController,
+      title: "取引名",
+      type: TextInputType.text,
+      format: FilteringTextInputFormatter.singleLineFormatter,
+    );
   }
 }

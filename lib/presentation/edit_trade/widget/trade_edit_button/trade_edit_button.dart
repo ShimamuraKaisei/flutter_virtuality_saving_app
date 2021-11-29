@@ -21,7 +21,6 @@ class TradeEditButton extends HookWidget {
     final tradeDateController = useProvider(tradeSelectController);
     final interactor = useProvider(tradeInteractrorProvider.notifier);
     final idController = useProvider(tradeIdController);
-
     return CupertinoButton(
       child: Text("編集保存"),
       color: Colors.red,
@@ -34,6 +33,7 @@ class TradeEditButton extends HookWidget {
           judgement: tradeSwitchStateController.indexState,
           tradeDay: tradeDateController.selectedDate!,
         );
+        Navigator.pop(context);
       },
     );
   }
