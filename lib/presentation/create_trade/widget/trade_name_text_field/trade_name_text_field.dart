@@ -15,6 +15,7 @@ class TradeNameTextField extends HookWidget {
       title: "取引名",
       type: TextInputType.text,
       format: FilteringTextInputFormatter.singleLineFormatter,
+      // focusNode: FocusNode(),
     );
   }
 }

@@ -16,6 +16,7 @@ class TradeMemoTextField extends HookWidget {
       title: "メモ",
       type: TextInputType.text,
       format: FilteringTextInputFormatter.singleLineFormatter,
+      // focusNode: FocusNode(),
     );
   }
 }
