@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_virtuality_saving_app/presentation/common/money_text_field_card.dart';
+import 'package:flutter_virtuality_saving_app/presentation/common/money_text_field_card/money_text_field_card.dart';
 import 'package:flutter_virtuality_saving_app/presentation/common/text_field_card.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_money_text_field/trade_money_text_field_controller.dart';

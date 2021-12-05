@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_virtuality_saving_app/presentation/common/keyboard_actions_helper.dart';
+import 'package:flutter_virtuality_saving_app/presentation/common/money_text_field_card/keyboard_actions_helper.dart';
 
 class KeyboardOverlay {
   static OverlayEntry? _overlayEntry;

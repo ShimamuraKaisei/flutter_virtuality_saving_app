@@ -13,6 +13,7 @@ class EditTradePage extends StatelessWidget {
   final DateTime day;
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: TradeSwitingButton(),
@@ -20,17 +21,17 @@ class EditTradePage extends StatelessWidget {
       ),
       backgroundColor: Colors.grey[200],
       body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TradeNameTextField(),
-              TradeMoneyTextField(),
-              TradeMemoTextField(),
-              TradeSelectDateField(day: day),
-              TradeEditButton(),
-            ],
-          ),
+        height: deviceSize.height,
+        width: deviceSize.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TradeNameTextField(),
+            TradeMoneyTextField(),
+            TradeMemoTextField(),
+            TradeSelectDateField(day: day),
+            TradeEditButton(),
+          ],
         ),
       ),
       bottomNavigationBar: TradeDeleteButton(),

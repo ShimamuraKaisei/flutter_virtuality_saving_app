@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:keyboard_actions/keyboard_actions.dart';
 
 //取引金額、取引名、メモを入力するTextFieldを囲うCardWidget
 class TextFieldCard extends HookWidget {

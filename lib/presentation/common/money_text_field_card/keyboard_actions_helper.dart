@@ -16,10 +16,10 @@ class InputDoneView extends StatelessWidget {
           child: CupertinoButton(
             padding: const EdgeInsets.only(right: 24.0, top: 8.0, bottom: 8.0),
             onPressed: () {
-              FocusScope.of(context).requestFocus(FocusNode());
+              FocusScope.of(context).unfocus();
             },
             child: const Text(
-              "閉じる",
+              "完了",
               style: TextStyle(
                 color: CupertinoColors.activeBlue,
               ),
