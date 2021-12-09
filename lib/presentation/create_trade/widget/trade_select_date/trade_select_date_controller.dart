@@ -22,7 +22,7 @@ class TradeSelectController extends StateNotifier<TradeSelectDateState> {
     showCupertinoModalPopup(
       context: context,
       builder: (_) => Container(
-        height: 270,
+        height: 260,
         color: Color.fromARGB(255, 255, 255, 255),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -60,7 +60,7 @@ class TradeSelectController extends StateNotifier<TradeSelectDateState> {
               ),
             ),
             Container(
-              height: 212,
+              height: 200,
               // padding: const EdgeInsets.only(top: 6.0),
               child: CupertinoDatePicker(
                 mode: CupertinoDatePickerMode.date, //日付限定

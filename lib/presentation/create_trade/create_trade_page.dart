@@ -18,17 +18,20 @@ class TradeCreatePage extends StatelessWidget {
         title: TradeSwitingButton(),
       ),
       backgroundColor: Colors.grey[200],
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TradeNameTextField(),
-              TradeMoneyTextField(),
-              TradeMemoTextField(),
-              TradeSelectDateField(day: day),
-              TradeCreateButton(),
-            ],
+      body: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: Container(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TradeNameTextField(),
+                TradeMoneyTextField(),
+                TradeMemoTextField(),
+                TradeSelectDateField(day: day),
+                TradeCreateButton(),
+              ],
+            ),
           ),
         ),
       ),
