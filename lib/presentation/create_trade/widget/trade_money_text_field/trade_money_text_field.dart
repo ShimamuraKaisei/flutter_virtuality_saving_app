@@ -7,7 +7,9 @@ import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/t
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TradeMoneyTextField extends HookWidget {
-  const TradeMoneyTextField({Key? key}) : super(key: key);
+  const TradeMoneyTextField({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class TradeMoneyTextField extends HookWidget {
       title: "金額",
       type: TextInputType.number,
       format: FilteringTextInputFormatter.digitsOnly, //コピペで数字以外がフィールドに入力されることを防ぐ
-      focusNode: FocusNode(),
+      // focusNode: FocusNode(),
     );
   }
 }

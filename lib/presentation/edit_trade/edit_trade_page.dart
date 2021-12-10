@@ -19,17 +19,20 @@ class EditTradePage extends StatelessWidget {
         toolbarHeight: 70,
       ),
       backgroundColor: Colors.grey[200],
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TradeNameTextField(),
-              TradeMoneyTextField(),
-              TradeMemoTextField(),
-              TradeSelectDateField(day: day),
-              TradeEditButton(),
-            ],
+      body: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: Container(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TradeNameTextField(),
+                TradeMoneyTextField(),
+                TradeMemoTextField(),
+                TradeSelectDateField(day: day),
+                TradeEditButton(),
+              ],
+            ),
           ),
         ),
       ),

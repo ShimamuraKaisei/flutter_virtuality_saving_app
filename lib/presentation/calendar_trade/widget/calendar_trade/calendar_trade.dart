@@ -5,7 +5,6 @@ import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/t
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_money_text_field/trade_money_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_name_text_field/trade_name_text_field_controller.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_select_date/trade_select_date_controller.dart';
-import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_switing_buton/trade_switching_button_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -68,31 +67,31 @@ class CalendarTrade extends HookWidget {
         return isSameDay(_selectedDay, day);
       },
       onDaySelected: (selectedDay, focuseDay) {
-        if (!isSameDay(_selectedDay, selectedDay)) {
-          // context.read(calendarTradeController.notifier).getCurrentDate(selectedDay);//今の所使ってない
-          //⏬
-          context.read(tradeSelectController.notifier).selectDateOnTap(selectedDay);
-          nameController.textEdtingController.text = "";
-          moneyController.textEdtingController.text = "";
-          tradeMemoController.textEdtingController.text = "";
+        // if (!isSameDay(_selectedDay, selectedDay)) {
+        // context.read(calendarTradeController.notifier).getCurrentDate(selectedDay);//今の所使ってない
+        //⏬
+        context.read(tradeSelectController.notifier).selectDateOnTap(selectedDay);
+        nameController.textEdtingController.text = "";
+        moneyController.textEdtingController.text = "";
+        tradeMemoController.textEdtingController.text = "";
 
-          showModalBottomSheet(
-            isScrollControlled: true,
-            context: context,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(20),
-              ),
+        showModalBottomSheet(
+          isScrollControlled: true,
+          context: context,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(20),
             ),
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            builder: (BuildContext context) {
-              return Container(
-                height: 590,
-                child: TradeCreatePage(day: _selectedDay),
-              );
-            },
-          );
-        }
+          ),
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          builder: (BuildContext context) {
+            return Container(
+              height: 590,
+              child: TradeCreatePage(day: _selectedDay),
+            );
+          },
+        );
+        // }
       },
       onPageChanged: (day) {
         tradeInteractor.getTradeAll(day); //表示している月のリストを取得

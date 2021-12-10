@@ -10,14 +10,14 @@ class MoneyTextFieldCard extends HookWidget {
   final String title;
   final TextInputType type;
   final TextInputFormatter format;
-  final FocusNode focusNode;
+  // final FocusNode focusNode;
   const MoneyTextFieldCard({
     Key? key,
     required this.textEditingController,
     required this.title,
     required this.type,
     required this.format,
-    required this.focusNode,
+    // required this.focusNode,
   }) : super(key: key);
 
   @override
@@ -32,7 +32,7 @@ class MoneyTextFieldCard extends HookWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: TextField(
-              focusNode: focusNode,
+              // focusNode: focusNode,
               inputFormatters: [format], //予定外のtextがTextFieldに入力されることを防ぐ（コピペ防止）
               controller: textEditingController,
               keyboardType: type, //キーボード指定
