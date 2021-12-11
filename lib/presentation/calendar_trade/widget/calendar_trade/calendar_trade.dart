@@ -67,7 +67,7 @@ class CalendarTrade extends HookWidget {
         return isSameDay(_selectedDay, day);
       },
       onDaySelected: (selectedDay, focuseDay) {
-        // if (!isSameDay(_selectedDay, selectedDay)) {
+        // if (!isSameDay(_selectedDay, selectedDay)) { //このままだと当日をタップしても関数が実行されない
         // context.read(calendarTradeController.notifier).getCurrentDate(selectedDay);//今の所使ってない
         //⏬
         context.read(tradeSelectController.notifier).selectDateOnTap(selectedDay);

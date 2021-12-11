@@ -12,7 +12,7 @@ class TradeSwitingButton extends HookWidget {
   Widget build(BuildContext context) {
     final indexState = useProvider(tradeSwitingButtonController).indexState;
     return Container(
-      width: 300,
+      width: 250,
       child: CupertinoSlidingSegmentedControl(
         backgroundColor: Colors.grey[300]!,
         thumbColor: Colors.amber[300]!,

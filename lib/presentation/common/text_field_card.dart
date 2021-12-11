@@ -23,24 +23,25 @@ class TextFieldCard extends HookWidget {
     return Container(
       child: Column(
         children: [
-          SizedBox(height: 20),
-          Text(title),
-          Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: TextField(
-              // focusNode: focusNode,
-              inputFormatters: [format], //予定外のtextがTextFieldに入力されることを防ぐ（コピペ防止）
-              controller: textEditingController,
-              keyboardType: type, //キーボード指定
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(
-                border: InputBorder.none,
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: 15),
+                child: Text(title),
               ),
-            ),
+              Flexible(
+                child: TextField(
+                  inputFormatters: [format], //予定外のtextがTextFieldに入力されることを防ぐ（コピペ防止）
+                  controller: textEditingController,
+                  keyboardType: type, //キーボード指定
+                  textAlign: TextAlign.end,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+            ],
           ),
-          SizedBox(height: 10),
         ],
       ),
     );

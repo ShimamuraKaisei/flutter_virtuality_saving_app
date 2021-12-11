@@ -16,30 +16,33 @@ class DateFieldCard extends HookWidget {
     return Container(
       child: Column(
         children: [
-          SizedBox(height: 20),
-          Text(title),
+          // SizedBox(height: 20),
           InkWell(
             child: SizedBox(
               width: double.infinity,
               height: 55,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(
-                  child: Text(
-                    DateFormat('yyyy年M月d日').format(selectedDate!),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Text(title),
                   ),
-                ),
+                  Center(
+                    child: Text(
+                      DateFormat('yyyy/M/d').format(selectedDate!),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 25),
+                    ),
+                  ),
+                ],
               ),
             ),
             onTap: () {
               dateSelectController.selectDateFromPicker(context);
             }, //⬅️ここでDatePickerを表示する
           ),
-          SizedBox(height: 20),
+          // SizedBox(height: 20),
         ],
       ),
     );

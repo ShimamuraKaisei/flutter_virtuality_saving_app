@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_memo_text_field/trade_memo_text_field.dart';
-import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_money_text_field/trade_money_text_field.dart';
-import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_name_text_field/trade_name_text_field.dart';
+import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_create_card/trade_create_card.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_create_button/trade_create_button.dart';
-import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_select_date/trade_select_date.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_switing_buton/trade_switching_button.dart';
 // import 'package:keyboard_actions/keyboard_actions.dart';
 
@@ -25,10 +22,9 @@ class TradeCreatePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TradeNameTextField(),
-                TradeMoneyTextField(),
-                TradeMemoTextField(),
-                TradeSelectDateField(day: day),
+                SizedBox(height: 30),
+                TradeCreateCard(day: day),
+                SizedBox(height: 20),
                 TradeCreateButton(),
               ],
             ),
