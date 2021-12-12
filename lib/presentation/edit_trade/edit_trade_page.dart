@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_create_card/trade_create_card.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_memo_text_field/trade_memo_text_field.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_money_text_field/trade_money_text_field.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_name_text_field/trade_name_text_field.dart';
@@ -15,8 +16,21 @@ class EditTradePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: Container(
+            padding: EdgeInsets.only(left: 5, top: 5),
+            child: Icon(
+              Icons.expand_more,
+              color: Colors.black,
+              size: 40,
+            ),
+          ),
+        ),
         title: TradeSwitingButton(),
         toolbarHeight: 70,
+        backgroundColor: Colors.grey[100],
       ),
       backgroundColor: Colors.grey[200],
       body: GestureDetector(
@@ -26,10 +40,13 @@ class EditTradePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TradeNameTextField(),
-                TradeMoneyTextField(),
-                TradeMemoTextField(),
-                TradeSelectDateField(day: day),
+                // TradeNameTextField(),
+                // TradeMoneyTextField(),
+                // TradeMemoTextField(),
+                // TradeSelectDateField(day: day),
+                SizedBox(height: 30),
+                TradeCreateCard(day: day),
+                SizedBox(height: 20),
                 TradeEditButton(),
               ],
             ),

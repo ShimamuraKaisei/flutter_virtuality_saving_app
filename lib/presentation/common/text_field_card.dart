@@ -37,6 +37,7 @@ class TextFieldCard extends HookWidget {
                   textAlign: TextAlign.end,
                   decoration: InputDecoration(
                     border: InputBorder.none,
+                    contentPadding: EdgeInsets.only(right: 10), //TextFieldをContainerでwrapしてpaddingを弄ろうとするとエラー
                   ),
                 ),
               ),

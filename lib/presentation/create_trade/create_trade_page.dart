@@ -13,6 +13,7 @@ class TradeCreatePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: TradeSwitingButton(),
+        backgroundColor: Colors.grey[100],
       ),
       backgroundColor: Colors.grey[200],
       body: GestureDetector(

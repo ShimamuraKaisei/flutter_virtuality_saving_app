@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_virtuality_saving_app/presentation/create_trade/widget/trade_select_date/trade_select_date_controller.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -28,11 +29,17 @@ class DateFieldCard extends HookWidget {
                     padding: EdgeInsets.only(left: 15),
                     child: Text(title),
                   ),
-                  Center(
-                    child: Text(
-                      DateFormat('yyyy/M/d').format(selectedDate!),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 25),
+                  Container(
+                    padding: EdgeInsets.only(right: 10),
+                    child: Center(
+                      child: Text(
+                        DateFormat('yyyy/M/d').format(selectedDate!),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 17.7,
+                          // fontWeight: FontWeight.normal,
+                        ),
+                      ),
                     ),
                   ),
                 ],

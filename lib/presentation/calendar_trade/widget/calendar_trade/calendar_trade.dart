@@ -29,7 +29,7 @@ class CalendarTrade extends HookWidget {
         formatButtonVisible: false, //フォーマット変更ボタンの非表示
         titleCentered: true,
         decoration: BoxDecoration(
-          color: Colors.blue,
+          color: Colors.grey[100],
         ),
         headerPadding: EdgeInsets.all(10),
       ),
