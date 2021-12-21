@@ -21,6 +21,7 @@ class TextFieldCard extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       child: Column(
         children: [
           Row(

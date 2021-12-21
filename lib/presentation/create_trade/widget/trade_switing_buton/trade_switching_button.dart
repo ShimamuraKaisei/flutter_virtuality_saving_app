@@ -15,7 +15,7 @@ class TradeSwitingButton extends HookWidget {
       width: 250,
       child: CupertinoSlidingSegmentedControl(
         backgroundColor: Colors.grey[300]!,
-        thumbColor: Colors.amber[300]!,
+        thumbColor: Colors.white,
         children: <int, Widget>{
           0: Text(
             '貯金',

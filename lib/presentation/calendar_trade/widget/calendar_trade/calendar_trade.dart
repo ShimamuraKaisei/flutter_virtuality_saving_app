@@ -25,6 +25,7 @@ class CalendarTrade extends HookWidget {
       firstDay: DateTime.utc(2000, 1, 1),
       lastDay: DateTime.utc(2200, 12, 31),
       headerStyle: HeaderStyle(
+        headerMargin: EdgeInsets.only(top: 5),
         titleTextStyle: TextStyle(fontSize: 25),
         formatButtonVisible: false, //フォーマット変更ボタンの非表示
         titleCentered: true,
@@ -37,27 +38,27 @@ class CalendarTrade extends HookWidget {
       daysOfWeekStyle: DaysOfWeekStyle(
         //曜日名ヘッダーのスタイル変更
         decoration: BoxDecoration(
-          color: Colors.grey[350],
+          color: Colors.grey[200],
         ),
         weekdayStyle: TextStyle(color: Colors.black),
         weekendStyle: TextStyle(color: Colors.red),
       ),
       rowHeight: 38, //カレンダー縦の余白
       calendarStyle: CalendarStyle(
-        tableBorder: TableBorder.all(),
-        selectedDecoration: BoxDecoration(color: Colors.amber[200]),
+        tableBorder: TableBorder.all(color: Colors.black26),
+        selectedDecoration: BoxDecoration(color: Colors.blue[100]),
         selectedTextStyle: TextStyle(color: Colors.black),
         defaultDecoration: BoxDecoration(
-          border: Border.all(color: Colors.black12),
+          border: Border.all(color: Colors.white),
         ),
         todayDecoration: BoxDecoration(
-          border: Border.all(color: Colors.black12),
+          border: Border.all(color: Colors.white),
         ),
         outsideDecoration: BoxDecoration(
-          border: Border.all(color: Colors.black12),
+          border: Border.all(color: Colors.white),
         ),
         weekendDecoration: BoxDecoration(
-          border: Border.all(color: Colors.black12),
+          border: Border.all(color: Colors.white),
         ),
         todayTextStyle: TextStyle(color: Colors.black),
         cellMargin: EdgeInsets.zero,

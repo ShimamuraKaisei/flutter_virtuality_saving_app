@@ -26,7 +26,7 @@ class TradeCreateButton extends HookWidget {
     final tradeDateController = useProvider(tradeSelectController);
     return CupertinoButton(
       child: Text('保存'),
-      color: Colors.red,
+      color: Colors.blue[400],
       onPressed: () {
         var uuid = Uuid().v1(); //一意のIDを生成
         if (nameController.textEdtingController.text == "" || moneyController.textEdtingController.text == "") {

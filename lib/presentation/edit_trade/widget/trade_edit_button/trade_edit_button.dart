@@ -23,7 +23,7 @@ class TradeEditButton extends HookWidget {
     final idController = useProvider(tradeIdController);
     return CupertinoButton(
       child: Text("編集保存"),
-      color: Colors.red,
+      color: Colors.blue[400],
       onPressed: () {
         interactor.updateTrade(
           id: idController.tradeId,

@@ -11,7 +11,7 @@ class ViewTradeMoneyDifference extends HookWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border(
-          bottom: BorderSide(color: Colors.black),
+          bottom: BorderSide(color: Colors.black12),
         ),
       ),
       child: Row(

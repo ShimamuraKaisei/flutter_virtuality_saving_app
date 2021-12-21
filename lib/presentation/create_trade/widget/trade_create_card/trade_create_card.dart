@@ -12,20 +12,21 @@ class TradeCreateCard extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Container(
-        padding: EdgeInsets.all(10),
-        child: Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          child: Column(
-            children: [
-              TradeNameTextField(),
-              Divider(height: 1),
-              TradeMoneyTextField(),
-              Divider(height: 1),
-              TradeMemoTextField(),
-              Divider(height: 1),
-              TradeSelectDateField(day: day),
-            ],
-          ),
+        //padding: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            Divider(height: 1),
+            TradeNameTextField(),
+            Divider(height: 1),
+            SizedBox(height: 70),
+            Divider(height: 1),
+            TradeMoneyTextField(),
+            Divider(height: 1),
+            TradeMemoTextField(),
+            Divider(height: 1),
+            TradeSelectDateField(day: day),
+            Divider(height: 1),
+          ],
         ),
       ),
     );

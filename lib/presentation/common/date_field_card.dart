@@ -15,6 +15,7 @@ class DateFieldCard extends HookWidget {
     final selectedDate = useProvider(tradeSelectController).selectedDate;
     final dateSelectController = useProvider(tradeSelectController.notifier);
     return Container(
+      color: Colors.white,
       child: Column(
         children: [
           // SizedBox(height: 20),

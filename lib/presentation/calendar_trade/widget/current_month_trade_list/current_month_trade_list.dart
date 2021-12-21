@@ -39,9 +39,9 @@ class CurrentMonthTradeList extends HookWidget {
                           width: double.infinity,
                           height: 30,
                           decoration: BoxDecoration(
-                            color: Colors.amber[100],
+                            color: Colors.grey[200],
                             border: const Border(
-                              top: BorderSide(color: Colors.black),
+                              top: BorderSide(color: Colors.black12),
                             ),
                           ),
                           child: Container(
@@ -83,7 +83,7 @@ class CurrentMonthTradeList extends HookWidget {
                           child: Container(
                             decoration: BoxDecoration(
                               border: const Border(
-                                top: BorderSide(color: Colors.black),
+                                top: BorderSide(color: Colors.black12),
                               ),
                             ),
                             child: ListTile(
@@ -131,7 +131,7 @@ class CurrentMonthTradeList extends HookWidget {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          border: const Border(top: BorderSide(color: Colors.black)),
+                          border: const Border(top: BorderSide(color: Colors.black12)),
                         ),
                         child: ListTile(
                           title: Row(
@@ -151,9 +151,9 @@ class CurrentMonthTradeList extends HookWidget {
                           width: double.infinity,
                           height: 30,
                           decoration: BoxDecoration(
-                            color: Colors.amber[100],
+                            color: Colors.grey[200],
                             border: const Border(
-                              top: BorderSide(color: Colors.black),
+                              top: BorderSide(color: Colors.black12),
                             ),
                           ),
                           child: Container(
@@ -194,7 +194,7 @@ class CurrentMonthTradeList extends HookWidget {
                           child: Container(
                             decoration: BoxDecoration(
                               border: const Border(
-                                top: BorderSide(color: Colors.black),
+                                top: BorderSide(color: Colors.black12),
                               ),
                             ),
                             child: ListTile(

@@ -23,9 +23,9 @@ class TradeCreatePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 30),
+                SizedBox(height: 50),
                 TradeCreateCard(day: day),
-                SizedBox(height: 20),
+                SizedBox(height: 50),
                 TradeCreateButton(),
               ],
             ),
